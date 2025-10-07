@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -68,6 +69,9 @@
 
     /* Badge */
     .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:#1b2040;color:#cfd6f4;border:1px solid #2b3150}
+
+    /* Calendly container */
+    .calendly { margin-top: 18px; }
   </style>
 </head>
 <body>
@@ -90,7 +94,8 @@
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
       </div>
-      <a href="#book" class="cta">Book Consultation</a>
+      <!-- Top CTA now opens Calendly directly -->
+      <a href="https://calendly.com/jadhav-h/30min" class="cta" target="_blank" rel="noopener">Book on Calendly</a>
     </div>
     <div class="drawer" id="drawer">
       <div class="container">
@@ -112,7 +117,7 @@
         <h1 class="title">Discover Your Life's True Path through Numbers<br><small style="font-size:.6em;color:#cbd5e1">अपने अंकों के माध्यम से जीवन का रहस्य जानें</small></h1>
         <p class="sub">Personalized Numerology readings: Name correction, Life Path, Business name, remedies & more. Get a beautiful PDF report + follow‑up support.</p>
         <div class="hero-cta">
-          <a class="cta" href="#book">Get My Reading</a>
+          <a class="cta" href="https://calendly.com/jadhav-h/30min" target="_blank" rel="noopener">Get My Reading (Calendly)</a>
           <a class="ghost" href="https://wa.me/918821967313" target="_blank" rel="noopener">WhatsApp</a>
         </div>
         <div style="margin-top:18px" class="badge">⭐ 4.9/5 Rated • 1000+ Lives Guided</div>
@@ -133,26 +138,26 @@
           <h3>✨ Name Correction</h3>
           <p>Balanced name suggestions aligned to your core numbers. Includes 1 recheck.</p>
           <div class="price">₹799</div>
-          <div><a href="#book" class="ghost">Book Now</a></div>
+          <div><a href="https://calendly.com/jadhav-h/30min" class="ghost" target="_blank" rel="noopener">Book on Calendly</a></div>
         </div>
         <div class="card service">
           <h3>🔮 Full Numerology</h3>
           <p>Moolank, Destiny, Personality, cycles + remedies. 45‑min session + PDF.</p>
           <div class="price">₹1,499</div>
-          <div><a href="#book" class="ghost">Book Now</a></div>
+          <div><a href="https://calendly.com/jadhav-h/30min" class="ghost" target="_blank" rel="noopener">Book on Calendly</a></div>
         </div>
         <div class="card service">
           <h3>🏪 Business Name Consult</h3>
           <p>Brand/Shop name options, slogan alignment & money‑flow optimization.</p>
           <div class="price">₹2,499</div>
-          <div><a href="#book" class="ghost">Book Now</a></div>
+          <div><a href="https://calendly.com/jadhav-h/30min" class="ghost" target="_blank" rel="noopener">Book on Calendly</a></div>
         </div>
       </div>
 
       <div class="card" style="margin-top:18px">
         <strong>Combo Package • कॉम्बो पैकेज</strong>
         <p style="margin:.5rem 0 0">Name + Life Path + Signature + 2 follow‑ups — <strong>₹3,999</strong>
-          <a class="cta" style="margin-left:12px;padding:8px 12px" href="#book">Grab Slot</a>
+          <a class="cta" style="margin-left:12px;padding:8px 12px" href="https://calendly.com/jadhav-h/30min" target="_blank" rel="noopener">Grab Slot</a>
         </p>
       </div>
     </div>
@@ -165,7 +170,7 @@
         <h2>About Hari • मेरे बारे में</h2>
         <p>I’m Hari H Jadhav, a Pune‑based numerologist helping people align their names, careers and businesses with the power of numbers. My approach blends classical numerology with practical, modern guidance so you can act with clarity.</p>
         <p>मैं पुणे का एक प्रोफेशनल अंकशास्त्री हूँ — मेरा उद्देश्य है कि सरल भाषा और स्पष्ट सलाह से आप अपने अंकों की शक्ति को जीवन में उतार सकें।</p>
-        <div class="badge">🗓️ Available: Sat–Sun • 11am–7pm</div>
+        <div class="badge">🗓️ Available: Mon–Sat • 11am–7pm</div>
       </div>
       <div class="card">
         <h3 style="margin-top:0">What you get • आपको क्या मिलेगा</h3>
@@ -220,34 +225,21 @@
     <div class="container grid-2">
       <div>
         <h2>Book a Consultation • समय बुक करें</h2>
-        <p style="color:#c8d0e4">Fill the form and I’ll confirm your slot on WhatsApp.
-        Payment link will be shared after confirmation.</p>
-        <form class="card" onsubmit="return handleSubmit(event)">
-          <label>Full Name<br><input required name="name" placeholder="Your full name" style="width:100%;margin-top:6px;padding:10px;border-radius:10px;border:1px solid #2b3150;background:#0f1220;color:var(--text)"></label>
-          <div style="height:10px"></div>
-          <label>Date of Birth<br><input required name="dob" type="date" style="width:100%;margin-top:6px;padding:10px;border-radius:10px;border:1px solid #2b3150;background:#0f1220;color:var(--text)"></label>
-          <div style="height:10px"></div>
-          <label>WhatsApp Number<br><input required name="wa" placeholder="e.g. 98765 43210" style="width:100%;margin-top:6px;padding:10px;border-radius:10px;border:1px solid #2b3150;background:#0f1220;color:var(--text)"></label>
-          <div style="height:10px"></div>
-          <label>Service Needed<br>
-            <select name="service" style="width:100%;margin-top:6px;padding:10px;border-radius:10px;border:1px solid #2b3150;background:#0f1220;color:var(--text)">
-              <option>Name Correction (₹799)</option>
-              <option>Full Numerology (₹1,499)</option>
-              <option>Business Name Consult (₹2,499)</option>
-              <option>Combo Package (₹3,999)</option>
-            </select>
-          </label>
-          <div style="height:10px"></div>
-          <label>Notes / Questions<br><textarea name="msg" rows="3" placeholder="Share any details..." style="width:100%;margin-top:6px;padding:10px;border-radius:10px;border:1px solid #2b3150;background:#0f1220;color:var(--text)"></textarea></label>
-          <div style="height:14px"></div>
-          <button class="cta" type="submit">Request Slot</button>
-          <a class="ghost" style="margin-left:8px" href="https://wa.me/918821967313" target="_blank" rel="noopener">WhatsApp Now</a>
-          <p id="formStatus" style="margin:.75rem 0 0;color:#a3e635"></p>
-        </form>
+        <p style="color:#c8d0e4">You can either book a slot via Calendly below or send your details on WhatsApp.</p>
+
+        <!-- Embedded Calendly -->
+        <div class="calendly card">
+          <h3 style="margin-top:0">Calendly — 30 min Session</h3>
+          <iframe src="https://calendly.com/jadhav-h/30min" width="100%" height="620" frameborder="0" scrolling="no" style="border: 1px solid #2b3150; border-radius: 14px;"></iframe>
+        </div>
+
+        <div style="height:16px"></div>
+        <a href="https://calendly.com/jadhav-h/30min" class="cta" target="_blank" rel="noopener">Open in New Tab</a>
       </div>
+
       <div id="contact" class="card">
         <h3 style="margin-top:0">Contact • संपर्क</h3>
-        <p>Email: <a href="mailto:contact@example.com">jadhav.h@gmail.com</a><br>WhatsApp: <a href="https://wa.me/918821967313" target="_blank" rel="noopener">+918821967313</a><br>City: Pune, India</p>
+        <p>Email: <a href="mailto:jadhav.h@gmail.com">jadhav.h@gmail.com</a><br>WhatsApp: <a href="https://wa.me/918821967313" target="_blank" rel="noopener">+91 88219 67313</a><br>City: Pune, India</p>
         <p class="muted">Prefer speaking in हिन्दी or English — both are welcome.</p>
       </div>
     </div>
@@ -269,17 +261,6 @@
     const drawer = document.getElementById('drawer');
     function toggleDrawer(){ if(!drawer) return; drawer.style.display = drawer.style.display === 'block' ? 'none' : 'block'; }
     document.getElementById('yr').textContent = new Date().getFullYear();
-
-    function handleSubmit(e){
-      e.preventDefault();
-      const data = Object.fromEntries(new FormData(e.target).entries());
-      const msg = encodeURIComponent(`New Numerology Booking%0AName: ${data.name}%0ADOB: ${data.dob}%0AWhatsApp: ${data.wa}%0AService: ${data.service}%0ANotes: ${data.msg || '-'}%0A`);
-      // Open WhatsApp pre-filled chat (feel free to replace number)
-      window.open(`https://wa.me/918821967313?text=${msg}`, '_blank');
-      document.getElementById('formStatus').textContent = 'Opened WhatsApp with your booking details ✅';
-      e.target.reset();
-      return false;
-    }
   </script>
 </body>
 </html>

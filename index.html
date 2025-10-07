@@ -275,7 +275,7 @@
       const data = Object.fromEntries(new FormData(e.target).entries());
       const msg = encodeURIComponent(`New Numerology Booking%0AName: ${data.name}%0ADOB: ${data.dob}%0AWhatsApp: ${data.wa}%0AService: ${data.service}%0ANotes: ${data.msg || '-'}%0A`);
       // Open WhatsApp pre-filled chat (feel free to replace number)
-      window.open(`https://wa.me/918878211880?text=${msg}`, '_blank');
+      window.open(`https://wa.me/918821967313?text=${msg}`, '_blank');
       document.getElementById('formStatus').textContent = 'Opened WhatsApp with your booking details ✅';
       e.target.reset();
       return false;

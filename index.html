@@ -119,11 +119,20 @@
       .grid-2{grid-template-columns:1fr}
       .grid-3{grid-template-columns:1fr}
       .menu{display:none}
-      .mobile-toggle{display:inline-block}
-    }
-    @media (max-width:640px){
-      .brand img{height:36px}
-      h1.title{font-size:28px}
+      h1.title{
+  font-size:clamp(28px,5vw,44px);
+  line-height:1.02;
+  margin:12px 0 8px;
+  font-weight:800;
+  color:var(--text); /* Dark blackish-gray heading */
+}
+
+p.lead{
+  color:var(--text); /* make subtext dark */
+  font-weight:500;
+  max-width:60ch;
+}
+
       .hero-ctas{flex-direction:column;align-items:stretch}
       .hero-grid{gap:18px}
     }
@@ -141,8 +150,8 @@
       </a>
 
       <div class="menu" role="menu" aria-hidden="false">
-        <a href="#services">Services • सेवाएँ</a>
-        <a href="#about">About • मेरे बारे में</a>
+        <a href="#services">Services •</a>
+        <a href="#about">About • </a>
         <a href="#testimonials">Reviews</a>
         <a href="#blog">Blog</a>
         <a href="#faq">FAQ</a>
@@ -175,13 +184,13 @@
       <div class="hero-grid">
         <main>
           <span class="chip">🔢 English • हिन्दी — Online Consultations</span>
-          <h1 class="title">Discover your life's true path through numbers<br><small style="font-size:.62em;color:var(--french-gray)">अपने अंकों के माध्यम से जीवन का रहस्य जानें</small></h1>
+          <h1 class="title">Discover your life's true path through numbers<br><small style="font-size:.62em;color:var(--black)">अपने अंकों के माध्यम से जीवन का रहस्य जानें</small></h1>
           <p class="lead">Personalized numerology readings: Name correction, Life Path, Business name consults, remedies & PDF report. Practical, modern guidance you can act on.</p>
 
           <div class="hero-ctas">
             <a class="btn btn-primary" href="https://calendly.com/jadhav-h/30min" target="_blank" rel="noopener">Get My Reading</a>
             <a class="btn btn-wa" href="https://chat.whatsapp.com/FxJaj6qeS5DLC7XoCFhtg8" target="_blank" rel="noopener">Join WhatsApp Group</a>
-            <a class="btn btn-white" href="tel:+919300594567">Call • 9300594567</a>
+            <a class="btn btn-white" href="tel:+919300594567">whatsapp me • 8821967313</a>
           </div>
 
           <div style="margin-top:14px" class="badge">⭐ 4.9/5 Rated • 1000+ Lives Guided</div>

@@ -4,21 +4,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Numerology with Hari — Numerology • अंकशास्त्र</title>
-  <meta name="description" content="Numerology with Hari — Personalized numerology readings, name correction, business-name consults, remedies & PDF reports. Book via Calendly or WhatsApp." />
+  <meta name="description" content="Numerology with Hari — Name correction, Life Path, Business name consults, remedies & PDF reports. Book via Calendly or WhatsApp." />
   <style>
-    /* Palette (user-provided) */
+    /* === Palette (user-provided) === */
     :root{
-      --seasalt: #f8f9faff;
-      --antiflash-white: #e9ecefff;
-      --platinum: #dee2e6ff;
-      --french-gray: #ced4daff;
-      --french-gray-2: #adb5bdff;
-      --slate-gray: #6c757dff;
-      --outer-space: #495057ff;
-      --onyx: #343a40ff;
-      --eerie-black: #212529ff;
+      --seasalt: #f8f9fa;
+      --antiflash-white: #e9ecef;
+      --platinum: #dee2e6;
+      --french-gray: #ced4da;
+      --french-gray-2: #adb5bd;
+      --slate-gray: #6c757d;
+      --outer-space: #495057;
+      --onyx: #343a40;
+      --eerie-black: #212529;
 
-      /* derived */
       --bg-gradient: linear-gradient(135deg, var(--seasalt) 0%, var(--antiflash-white) 50%, var(--platinum) 100%);
       --surface: #ffffff;
       --muted: var(--slate-gray);
@@ -31,44 +30,44 @@
       --max-width: 1100px;
     }
 
-    /* Reset & base */
+    /* ===== Reset & base ===== */
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Nirmala UI", "Helvetica Neue", Arial, sans-serif;
       -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
       background: var(--bg-gradient);
       color:var(--text);
       line-height:1.5;
-      -webkit-tap-highlight-color: transparent;
-      -webkit-font-feature-settings: "liga" 1;
     }
     .container{width:min(var(--max-width),94%);margin:0 auto;padding:18px 0;}
 
-    /* Header / nav */
+    /* ===== Header / Nav ===== */
     nav.nav{
       position:sticky;top:0;z-index:60;
-      background: rgba(255,255,255,0.94);
+      background: rgba(255,255,255,0.96);
       backdrop-filter: blur(6px);
       border-bottom:1px solid var(--border);
-      box-shadow:0 2px 8px rgba(0,0,0,0.03);
+      box-shadow:0 6px 18px rgba(0,0,0,0.03);
     }
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 6px;}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 6px}
     .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--eerie-black)}
     .brand img{height:44px;width:auto;border-radius:8px}
     .brand strong{font-size:1.05rem}
-    .menu{display:flex;gap:12px;align-items:center}
+    .menu{display:flex;gap:10px;align-items:center}
     .menu a{color:var(--outer-space);text-decoration:none;padding:8px;border-radius:8px;font-weight:600}
     .menu a:hover{color:var(--onyx)}
     .cta{background:linear-gradient(90deg,var(--onyx),var(--outer-space));color:#fff;padding:10px 14px;border-radius:999px;text-decoration:none;font-weight:700;box-shadow:0 8px 22px rgba(0,0,0,0.08)}
 
-    /* Hero */
-    header.hero{padding:56px 0 36px}
+    /* Mobile hamburger */
+    .mobile-toggle{display:none;border:0;background:transparent;font-size:20px;cursor:pointer}
+
+    /* ===== Hero ===== */
+    header.hero{padding:60px 0 40px}
     .hero-grid{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:start}
     .chip{display:inline-flex;gap:8px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.7);border:1px solid var(--border);color:var(--muted);font-weight:700}
-    h1.title{font-size:clamp(28px,5vw,44px);line-height:1.03;margin:12px 0 8px;font-weight:800}
+    h1.title{font-size:clamp(28px,5vw,44px);line-height:1.02;margin:12px 0 8px;font-weight:800}
     p.lead{color:var(--slate-gray);max-width:60ch}
     .hero-ctas{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
     .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:700;border:0}
@@ -77,12 +76,12 @@
     .btn-wa{background:var(--whatsapp-grad);color:#fff}
 
     /* Right card */
-    .card{background:var(--surface);border-radius:14px;padding:18px;border:1px solid var(--border);box-shadow:0 8px 22px rgba(0,0,0,0.04)}
+    .card{background:var(--surface);border-radius:14px;padding:18px;border:1px solid var(--border);box-shadow:0 10px 30px rgba(0,0,0,0.04)}
     .card h3{margin:0 0 8px}
     .card p{margin:0;color:var(--slate-gray)}
 
-    /* Services */
-    section#services{padding:40px 0}
+    /* ===== Services ===== */
+    section#services{padding:36px 0}
     .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
     .service-card{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfbfd);border:1px solid var(--border)}
     .avatar{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--outer-space),var(--onyx));color:#fff;display:grid;place-items:center;font-weight:800;font-size:1rem}
@@ -90,35 +89,46 @@
     .service-meta{color:var(--slate-gray);margin-top:6px}
     .service-card a{margin-top:8px;display:inline-block}
 
-    /* About */
-    #about{padding:40px 0}
+    /* ===== About ===== */
+    #about{padding:36px 0}
     .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--onyx),var(--outer-space));color:#fff;font-weight:700}
 
-    /* Testimonials / blog / faq simplified */
+    /* ===== Testimonials ===== */
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .testimonial-card{padding:14px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfbfd);border:1px solid var(--border)}
+    .testimonial-card p{margin:8px 0 0;color:var(--slate-gray)}
+
+    /* ===== Blog / Resources ===== */
+    .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .blog-card{padding:12px;border-radius:12px;background:var(--surface);border:1px solid var(--border)}
+
+    /* ===== FAQ ===== */
     details{background:linear-gradient(180deg,#fff,#fbfbfd);border:1px solid var(--border);padding:12px;border-radius:12px}
     summary{cursor:pointer;font-weight:700}
 
-    /* Contact */
+    /* ===== Contact ===== */
     .contact-card{display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:12px;background:var(--surface);border:1px solid var(--border)}
     .contact-card a{color:var(--outer-space);text-decoration:none;font-weight:700}
-    .contact-row{display:flex;gap:12px;align-items:center}
 
-    /* Footer */
+    /* ===== Footer ===== */
     footer.sitefoot{padding:28px 0;color:var(--muted);border-top:1px solid rgba(0,0,0,0.04)}
 
-    /* Responsive */
+    /* ===== Utilities & responsiveness ===== */
     @media (max-width:980px){
       .hero-grid{grid-template-columns:1fr}
       .grid-2{grid-template-columns:1fr}
       .grid-3{grid-template-columns:1fr}
       .menu{display:none}
+      .mobile-toggle{display:inline-block}
     }
-
     @media (max-width:640px){
       .brand img{height:36px}
       h1.title{font-size:28px}
+      .hero-ctas{flex-direction:column;align-items:stretch}
+      .hero-grid{gap:18px}
     }
+    .muted{color:var(--muted)}
+    .center{display:flex;align-items:center;justify-content:center}
   </style>
 </head>
 <body>
@@ -126,7 +136,6 @@
   <nav class="nav" role="navigation" aria-label="Primary">
     <div class="container nav-inner">
       <a class="brand" href="#top">
-        <!-- put your logo as logo.png in same folder -->
         <img src="logo.png" alt="Numerology with Hari logo" onerror="this.style.display='none'">
         <strong>Numerology with Hari</strong>
       </a>
@@ -135,9 +144,231 @@
         <a href="#services">Services • सेवाएँ</a>
         <a href="#about">About • मेरे बारे में</a>
         <a href="#testimonials">Reviews</a>
+        <a href="#blog">Blog</a>
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
       </div>
 
       <div style="display:flex;gap:10px;align-items:center">
-        <a class="btn btn-white" href="mailto:jadhav.h@gmail.com
+        <a class="btn btn-white" href="mailto:jadhav.h@gmail.com">Email</a>
+        <a class="btn btn-primary" href="https://calendly.com/jadhav-h/30min" target="_blank" rel="noopener">Book</a>
+        <button class="mobile-toggle" aria-label="Open menu" onclick="toggleDrawer()">☰</button>
+      </div>
+    </div>
+
+    <!-- Mobile drawer (hidden normally) -->
+    <div id="drawer" style="display:none;background:rgba(255,255,255,0.98);border-top:1px solid var(--border)">
+      <div class="container" style="padding:12px;display:flex;flex-direction:column;gap:8px">
+        <a href="#services" onclick="toggleDrawer()">Services • सेवाएँ</a>
+        <a href="#about" onclick="toggleDrawer()">About • मेरे बारे में</a>
+        <a href="#testimonials" onclick="toggleDrawer()">Reviews</a>
+        <a href="#blog" onclick="toggleDrawer()">Blog</a>
+        <a href="#faq" onclick="toggleDrawer()">FAQ</a>
+        <a href="#contact" onclick="toggleDrawer()">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="top" class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <main>
+          <span class="chip">🔢 English • हिन्दी — Online Consultations</span>
+          <h1 class="title">Discover your life's true path through numbers<br><small style="font-size:.62em;color:var(--french-gray)">अपने अंकों के माध्यम से जीवन का रहस्य जानें</small></h1>
+          <p class="lead">Personalized numerology readings: Name correction, Life Path, Business name consults, remedies & PDF report. Practical, modern guidance you can act on.</p>
+
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="https://calendly.com/jadhav-h/30min" target="_blank" rel="noopener">Get My Reading</a>
+            <a class="btn btn-wa" href="https://chat.whatsapp.com/FxJaj6qeS5DLC7XoCFhtg8" target="_blank" rel="noopener">Join WhatsApp Group</a>
+            <a class="btn btn-white" href="tel:+919300594567">Call • 9300594567</a>
+          </div>
+
+          <div style="margin-top:14px" class="badge">⭐ 4.9/5 Rated • 1000+ Lives Guided</div>
+        </main>
+
+        <aside>
+          <div class="card" aria-live="polite">
+            <h3>Today’s Lucky Insight • आज का शुभ संकेत</h3>
+            <p>Number 3 favours communication & creativity. Wear yellow today and speak your truth. Schedule important calls before 4 PM.</p>
+            <div style="height:12px"></div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <a class="btn btn-primary" href="https://calendly.com/jadhav-h/30min" target="_blank" rel="noopener">Book</a>
+              <a class="btn btn-wa" href="https://wa.me/918821967313" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <!-- SERVICES -->
+  <section id="services" aria-labelledby="services-heading">
+    <div class="container">
+      <h2 id="services-heading">Services • सेवाएँ</h2>
+      <p class="muted" style="margin-top:6px">English + हिन्दी options available — select what suits you.</p>
+      <div style="height:12px"></div>
+
+      <div class="grid-2" role="list">
+        <!-- Name Correction -->
+        <article class="service-card" role="listitem">
+          <div class="avatar">N</div>
+          <div>
+            <strong>✨ Name Correction • नाम संतुलन</strong>
+            <div class="service-meta">₹799 — Name balancing + 1 recheck</div>
+            <a class="btn btn-wa" href="https://wa.me/918821967313" target="_blank" rel="noopener">Book via WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- Full Numerology -->
+        <article class="service-card" role="listitem">
+          <div class="avatar">F</div>
+          <div>
+            <strong>🔮 Full Numerology • पूरा अंकशास्त्र</strong>
+            <div class="service-meta">₹1499 — Moolank, Destiny, Remedies + PDF</div>
+            <a class="btn btn-wa" href="https://wa.me/918821967313" target="_blank" rel="noopener">Book via WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- Business Name -->
+        <article class="service-card" role="listitem">
+          <div class="avatar">B</div>
+          <div>
+            <strong>🏪 Business Name Consult</strong>
+            <div class="service-meta">₹2499 — Name, slogan & money flow</div>
+            <a class="btn btn-wa" href="https://wa.me/918821967313" target="_blank" rel="noopener">Book via WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- Mobile Number -->
+        <article class="service-card" role="listitem">
+          <div class="avatar">M</div>
+          <div>
+            <strong>📱 Mobile Number Correction</strong>
+            <div class="service-meta">₹500 — Vibrational check & suggestion</div>
+            <a class="btn btn-wa" href="https://wa.me/918821967313" target="_blank" rel="noopener">Book via WhatsApp</a>
+          </div>
+        </article>
+      </div>
+
+      <div style="height:16px"></div>
+      <div class="card" style="padding:14px">
+        <strong>💼 Combo Package • कॉम्बो पैकेज</strong>
+        <p style="margin:.4rem 0;color:var(--slate-gray)">₹3999 — Name + Life Path + Signature + 2 follow-ups</p>
+        <a class="btn btn-primary" href="https://calendly.com/jadhav-h/30min" target="_blank" rel="noopener">Book Combo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" aria-labelledby="about-heading">
+    <div class="container grid-2" style="align-items:start;gap:24px">
+      <div>
+        <h2 id="about-heading">About Hari • मेरे बारे में</h2>
+        <p><strong>I’m Hari H Jadhav</strong>, a Pune-based numerologist helping people align their names, careers and businesses with the power of numbers. My approach blends classical numerology with practical, modern guidance so you can act with clarity.</p>
+        <p>मैं पुणे का एक प्रोफेशनल अंकशास्त्री हूँ — मेरा उद्देश्य है कि सरल भाषा और स्पष्ट सलाह से आप अपने अंकों की शक्ति को जीवन में उतार सकें।</p>
+        <div style="margin-top:12px" class="badge">🗓️ Available: Mon–Sat • 11am–7pm</div>
+      </div>
+
+      <aside class="card contact-card" id="contact" aria-labelledby="contact-heading">
+        <h3 id="contact-heading">Contact • संपर्क</h3>
+        <div><strong>Email:</strong> <a href="mailto:jadhav.h@gmail.com">jadhav.h@gmail.com</a></div>
+        <div><strong>Phone:</strong> <a href="tel:+919300594567">+91 93005 94567</a></div>
+        <div><strong>City:</strong> Pune, India</div>
+        <div style="height:8px"></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <a class="btn btn-wa" href="https://chat.whatsapp.com/FxJaj6qeS5DLC7XoCFhtg8" target="_blank" rel="noopener">Join WhatsApp Group</a>
+          <a class="btn btn-primary" href="https://calendly.com/jadhav-h/30min" target="_blank" rel="noopener">Book via Calendly</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="container">
+      <h2>Client Reviews • ग्राहक अनुभव</h2>
+      <div style="height:12px"></div>
+      <div class="grid-3" aria-live="polite">
+        <div class="testimonial-card">
+          <strong>Anita, Pune</strong>
+          <p class="muted">“Name correction के बाद growth तेज़ दिखी — report बहुत साफ़ और helpful थी।”</p>
+        </div>
+        <div class="testimonial-card">
+          <strong>Rohit, Mumbai</strong>
+          <p class="muted">“Business name consult से branding clear हुई और leads बढ़ीं. Highly recommended.”</p>
+        </div>
+        <div class="testimonial-card">
+          <strong>Shreya, Pune</strong>
+          <p class="muted">“Full numerology session ने direction दी — remedies practical थीं.”</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG / RESOURCES -->
+  <section id="blog">
+    <div class="container">
+      <h2>Articles & Resources • लेख</h2>
+      <div style="height:12px"></div>
+      <div class="blog-grid">
+        <article class="blog-card">
+          <h3>कैसे निकालें अपना मूलांक?</h3>
+          <p class="muted">Quick guide with examples to calculate your Moolank.</p>
+          <a class="muted" href="#">Read</a>
+        </article>
+        <article class="blog-card">
+          <h3>Destiny Number & Love</h3>
+          <p class="muted">What your destiny number says about compatibility.</p>
+          <a class="muted" href="#">Read</a>
+        </article>
+        <article class="blog-card">
+          <h3>Money Flow & Name Number</h3>
+          <p class="muted">Balance your name vibrations for steady finances.</p>
+          <a class="muted" href="#">Read</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <h2>FAQ • अक्सर पूछे जाने वाले सवाल</h2>
+      <div style="height:12px"></div>
+      <div class="grid-2">
+        <details open>
+          <summary>क्या consultation के बाद PDF रिपोर्ट मिलती है?</summary>
+          <p>हाँ — English + हिन्दी में सुंदर, actionable PDF report दी जाती है।</p>
+        </details>
+        <details>
+          <summary>Follow-up support?</summary>
+          <p>Full session के साथ WhatsApp पर short follow-up included.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="sitefoot">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div>© <span id="yr"></span> Numerology with Hari</div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <a href="mailto:jadhav.h@gmail.com">jadhav.h@gmail.com</a>
+        <a href="https://calendly.com/jadhav-h/30min" target="_blank" rel="noopener">Book</a>
+        <a href="https://chat.whatsapp.com/FxJaj6qeS5DLC7XoCFhtg8" target="_blank" rel="noopener">WhatsApp Group</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // small helpers
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    function toggleDrawer(){
+      const d = document.getElementById('drawer');
+      if(!d) return;
+      d.style.display = d.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+</body>
+</html>

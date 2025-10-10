@@ -143,56 +143,9 @@ p.lead{
 <body>
   <!-- NAV -->
   <!-- === HEADER UPDATED === -->
-/* base */
-* { box-sizing: border-box; }
-html, body { overflow-x: hidden; }
-nav.nav{
-  position:sticky; top:0; z-index:100;
-  background:#fff;
-  border-bottom:2px solid #9B5DE5;
-}
-.nav-inner{
-  display:flex; align-items:center; justify-content:space-between;
-  width:100%; max-width:1200px; margin:0 auto; padding:8px 12px;
-}
-.brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
-.brand img{ height:72px; width:auto; object-fit:contain; display:block; }
-.brand strong{ color:#6C2BD9; font-weight:800; font-size:1.7rem; line-height:1; }
-
-.menu{ display:flex; align-items:center; gap:18px; }
-.menu a{ color:#3B1E77; text-decoration:none; font-weight:500; }
-
-.mobile-toggle{
-  display:none; border:0; background:transparent; font-size:26px; cursor:pointer;
-}
-
-/* === MOBILE FIX === */
-@media (max-width: 768px){
-  .brand img{ height:64px; }
-  .brand strong{ font-size:1.25rem; }
-
-  /* hamburger दिखाएँ */
-  .mobile-toggle{ display:block; }
-
-  /* मेन्यू को छिपाएँ और स्लाइड-डाउन बनायें */
-  .menu{
-    display:none;               /* hidden by default */
-    position:absolute; left:0; right:0; top:74px;
-    background:#fff; border-top:1px solid #eee;
-    padding:12px 16px; gap:12px; flex-direction:column;
-  }
-  .menu.open{ display:flex; }
-
-  /* nav-inner को edge-to-edge रखें */
-  .nav-inner{ padding:8px 12px; }
-}
-
-/* छोटे फोन पर headings wrap न हों */
-@media (max-width: 360px){
-  .brand strong{ font-size:1.1rem; }
-  .brand img{ height:56px; }
-}
-
+<nav class="nav" role="navigation" aria-label="Primary" style="background-color:#fff; border-bottom:2px solid #9B5DE5;">
+  <div class="container nav-inner" style="display:flex; align-items:center; justify-content:space-between; padding:8px 10px;">
+    
     <!-- LOGO & BRAND -->
     <a class="brand" href="#top" style="display:flex; align-items:center; text-decoration:none;">
       <img src="HARILOGO.png" alt="Numerology with Hari Logo" style="height:85px; width:auto; margin-right:10px; object-fit:contain;">

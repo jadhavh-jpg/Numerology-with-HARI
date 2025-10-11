@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lucky Name Calculator</title>
+<style>
+:root {
+  --brand:#6a0dad;
+  --ink:#222;
+  --muted:#6b7280;
+  --soft:#f8f5ff;
+}
+body {
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  margin:0;
+  background:linear-gradient(180deg,var(--soft),#fff);
+  color:var(--ink);
+}
+.container {
+  max-width:850px;
+  margin:0 auto;
+  padding:28px 18px;
+}
+h1 {
+  color:var(--brand);
+}
+.card {
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:14px;
+  box-shadow:0 6px 18px rgba(0,0,0,.06);
+  padding:20px;
+}
+input,button {
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  border:1.5px solid #ddd;
+  font-size:1rem;
+}
+input:focus {
+  outline:none;
+  border-color:var(--brand);
+  box-shadow:0 0 0 4px rgba(106,13,173,.18);
+}
+button {
+  background:var(--brand);
+  border:0;
+  color:#fff;
+  font-weight:700;
+  margin-top:10px;
+  cursor:pointer;
+  box-shadow:0 4px 12px rgba(106,13,173,.25);
+}
+button:hover {
+  transform:translateY(-1px);
+}
+.result {
+  margin-top:14px;
+  padding:14px;
+  border-radius:12px;
+  background:#f3e8ff;
+}
+a.back {
+  display:inline-block;
+  margin-top:18px;
+  text-decoration:none;
+  color:#fff;
+  background:#111;
+  padding:10px 14px;
+  border-radius:10px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Lucky Name Calculator</h1>
+  <p class="card">
+    यह Calculator आपके <b>Name Number</b> और <b>Birth Number</b> को मिलाकर बताता है कि नाम आपके लिए कितना शुभ है।<br>
+    Enter your full name (English) and Date of Birth to find compatibility.
+  </p>
+
+  <div class="card">
+    <label><b>Full Name</b></label>
+    <input id="name" placeholder="e.g. Hari Ram Jadhav">
+    <label><b>Date of Birth</b></label>
+    <input id="dob" type="date">
+    <button id="calc">Check Luck</button>
+    <div id="out" class="result" style="display:none"></div>
+  </div>
+
+  <a class="back" href="index.html">← Back to Home</a>
+</div>
+
+<script>
+const map = {A:1,J:1,S:1,B:2,K:2,T:2,C:3,L:3,U:3,D:4,M:4,V:4,E:5,N:5,W:5,F:6,O:6,X:6,G:7,P:7,Y:7,H:8,Q:8,Z:8,I:9,R:9};
+
+function digitSum(n){return n.toString().split('').reduce((a,b)=>a+(+b),0)}
+function reduceKeepMasters(n){while(![11,22,33].includes(n)&&n>9){n=digitSum(n)}return n}
+function nameNumber(name){
+  const letters = name.toUpperCase().replace(/[^A-Z]/g,'').split('');
+  let total=0;
+  letters.forEach(ch=>{total+=map[ch]||0});
+  return reduceKeepMasters(total);
+}
+function birthNumber(dob){
+  const [y,m,d]=dob.split('-').map(Number);
+  return reduceKeepMasters(d);
+}
+
+document.getElementById('calc').onclick=function(){
+  const name=document.getElementById('name').value.trim();
+  const dob=document.getElementById('dob').value;
+  const out=document.getElementById('out');
+  if(!name||!dob){alert("Please enter your full name and date of birth.");return;}
+  const nNum=nameNumber(name);
+  const bNum=birthNumber(dob);
+
+  let luckMsg="";
+  if(nNum===bNum){luckMsg="🌟 Perfect Match! Your name vibrates in harmony with your birth number.";}
+  else if(Math.abs(nNum-bNum)===1){luckMsg="✨ Good Match — minor adjustments can make it excellent.";}
+  else{luckMsg="⚠️ Not a good match — consider name correction for better alignment.";}
+  out.style.display='block';
+  out.innerHTML=`<b>Name Number:</b> ${nNum}<br><b>Birth Number:</b> ${bNum}<br><br>${luckMsg}`;
+};
+</script>
+</body>
+</html>

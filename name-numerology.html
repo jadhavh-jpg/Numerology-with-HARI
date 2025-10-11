@@ -1,44 +1,110 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Name Numerology Calculator</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Name Numerology Calculator (Chaldean System)</title>
 <style>
-:root{--brand:#6a0dad;--ink:#222}
-body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:linear-gradient(180deg,#f8f5ff,#fff);color:var(--ink)}
-.container{max-width:850px;margin:0 auto;padding:28px 18px}
-h1{color:var(--brand)}
-.card{background:#fff;border:1px solid #eee;border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,.06);padding:18px}
-input,button{width:100%;padding:12px;border-radius:10px;border:1.5px solid #ddd;font-size:1rem}
-input:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 4px rgba(106,13,173,.18)}
-button{background:var(--brand);border:0;color:#fff;font-weight:700;margin-top:10px;cursor:pointer;box-shadow:0 4px 12px rgba(106,13,173,.25)}
-table{width:100%;border-collapse:collapse;margin-top:10px}
-td,th{padding:8px;border-bottom:1px solid #eee;text-align:left}
-.result{margin-top:14px;padding:14px;border-radius:12px;background:#f3e8ff}
-mono{font-family:ui-monospace,Menlo,Consolas,monospace}
-a.back{display:inline-block;margin-top:18px;text-decoration:none;color:#fff;background:#111;padding:10px 14px;border-radius:10px}
+:root {
+  --brand:#6a0dad;
+  --ink:#222;
+  --muted:#6b7280;
+  --soft:#f8f5ff;
+}
+body {
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  margin:0;
+  background:linear-gradient(180deg,var(--soft),#fff);
+  color:var(--ink);
+}
+.container {
+  max-width:850px;
+  margin:0 auto;
+  padding:28px 18px;
+}
+h1 {
+  color:var(--brand);
+}
+.card {
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:14px;
+  box-shadow:0 6px 18px rgba(0,0,0,.06);
+  padding:20px;
+}
+input,button {
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  border:1.5px solid #ddd;
+  font-size:1rem;
+}
+input:focus {
+  outline:none;
+  border-color:var(--brand);
+  box-shadow:0 0 0 4px rgba(106,13,173,.18);
+}
+button {
+  background:var(--brand);
+  border:0;
+  color:#fff;
+  font-weight:700;
+  margin-top:10px;
+  cursor:pointer;
+  box-shadow:0 4px 12px rgba(106,13,173,.25);
+}
+button:hover {
+  transform:translateY(-1px);
+}
+table {
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
+}
+td,th {
+  padding:8px;
+  border-bottom:1px solid #eee;
+  text-align:left;
+}
+.result {
+  margin-top:14px;
+  padding:14px;
+  border-radius:12px;
+  background:#f3e8ff;
+}
+a.back {
+  display:inline-block;
+  margin-top:18px;
+  text-decoration:none;
+  color:#fff;
+  background:#111;
+  padding:10px 14px;
+  border-radius:10px;
+}
 </style>
 </head>
 <body>
 <div class="container">
-  <h1>Name Numerology (Pythagorean)</h1>
+  <h1>Name Numerology (Chaldean System)</h1>
   <div class="card">
-    <label for="name"><b>Enter Name (English)</b></label>
+    <p>Enter your full name below (in English). This calculator uses the <strong>Chaldean numerology system</strong> (1–8) to determine your Name Number.</p>
+    <label for="name"><b>Enter Name</b></label>
     <input id="name" placeholder="e.g. Hari Ram Jadhav">
     <button id="calc">Calculate</button>
     <div id="out" class="result" style="display:none"></div>
+    
     <details style="margin-top:10px">
-      <summary><b>Letter Values</b></summary>
+      <summary><b>Chaldean Letter Values</b></summary>
       <table>
-        <tr><td>1</td><td>A J S</td></tr>
-        <tr><td>2</td><td>B K T</td></tr>
-        <tr><td>3</td><td>C L U</td></tr>
-        <tr><td>4</td><td>D M V</td></tr>
-        <tr><td>5</td><td>E N W</td></tr>
-        <tr><td>6</td><td>F O X</td></tr>
-        <tr><td>7</td><td>G P Y</td></tr>
-        <tr><td>8</td><td>H Q Z</td></tr>
-        <tr><td>9</td><td>I R</td></tr>
+        <tr><td>1</td><td>A, I, J, Q, Y</td></tr>
+        <tr><td>2</td><td>B, K, R</td></tr>
+        <tr><td>3</td><td>C, G, L, S</td></tr>
+        <tr><td>4</td><td>D, M, T</td></tr>
+        <tr><td>5</td><td>E, H, N, X</td></tr>
+        <tr><td>6</td><td>U, V, W</td></tr>
+        <tr><td>7</td><td>O, Z</td></tr>
+        <tr><td>8</td><td>F, P</td></tr>
+        <tr><td>9</td><td>(Used only when total reduces to 9)</td></tr>
       </table>
     </details>
   </div>
@@ -46,25 +112,58 @@ a.back{display:inline-block;margin-top:18px;text-decoration:none;color:#fff;back
 </div>
 
 <script>
-const map = {A:1,J:1,S:1,B:2,K:2,T:2,C:3,L:3,U:3,D:4,M:4,V:4,E:5,N:5,W:5,F:6,O:6,X:6,G:7,P:7,Y:7,H:8,Q:8,Z:8,I:9,R:9};
-const meaning = {
-  1:"Leadership & independence",2:"Cooperation & balance",3:"Creativity & communication",
-  4:"Stability & work",5:"Freedom & change",6:"Responsibility & care",
-  7:"Analysis & spirituality",8:"Power & success",9:"Compassion & service",
-  11:"Intuition & inspiration (Master 11)",22:"Master builder (Master 22)",33:"Master teacher (Master 33)"
+// 🔢 Chaldean Mapping
+const chaldean = {
+  A:1, I:1, J:1, Q:1, Y:1,
+  B:2, K:2, R:2,
+  C:3, G:3, L:3, S:3,
+  D:4, M:4, T:4,
+  E:5, H:5, N:5, X:5,
+  U:6, V:6, W:6,
+  O:7, Z:7,
+  F:8, P:8
 };
+
 function digitSum(n){return n.toString().split('').reduce((a,b)=>a+(+b),0)}
-function reduceKeepMasters(n){while(![11,22,33].includes(n)&&n>9){n=digitSum(n)}return n}
+function reduceChaldean(n){
+  while(n>8 && n!==9){n=digitSum(n)}
+  return n;
+}
+
+const meanings = {
+  1:"Leadership, individuality, ambition",
+  2:"Cooperation, peace, balance",
+  3:"Creativity, joy, expression",
+  4:"Stability, order, foundation",
+  5:"Freedom, change, communication",
+  6:"Responsibility, family, love",
+  7:"Spirituality, intuition, introspection",
+  8:"Power, success, authority",
+  9:"Completion, compassion, universal love"
+};
+
 document.getElementById('calc').onclick=function(){
   const raw = (document.getElementById('name').value||"").toUpperCase();
   const letters = raw.replace(/[^A-Z]/g,'').split('');
   if(!letters.length){alert("Please type a name in English letters.");return;}
-  let total=0, rows=[];
-  letters.forEach(ch=>{const v = map[ch]||0; total+=v; rows.push(`<mono>${ch}</mono>=${v}`);});
-  const core = reduceKeepMasters(total);
+
+  let total=0;
+  let breakdown=[];
+  letters.forEach(ch=>{
+    const v = chaldean[ch]||0;
+    total+=v;
+    breakdown.push(`${ch}=${v}`);
+  });
+
+  const final = reduceChaldean(total);
   const box=document.getElementById('out');
   box.style.display='block';
-  box.innerHTML = `<b>Total:</b> ${total} → <b>Name Number:</b> ${core}<br>${meaning[core]||""}<br><small>${rows.join(' • ')}</small>`;
+  box.innerHTML = `
+    <b>Total Value:</b> ${total}<br>
+    <b>Name Number:</b> ${final}<br>
+    <p>${meanings[final]||""}</p>
+    <small>${breakdown.join(' • ')}</small>
+  `;
 };
 </script>
 </body>

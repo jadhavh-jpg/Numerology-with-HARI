@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Lucky Name Calculator</title>
+<title>Lucky Name Calculator (Chaldean System)</title>
 <style>
 :root {
   --brand:#6a0dad;
@@ -75,10 +75,10 @@ a.back {
 </head>
 <body>
 <div class="container">
-  <h1>Lucky Name Calculator</h1>
+  <h1>Lucky Name Calculator (Chaldean)</h1>
   <p class="card">
-    यह Calculator आपके <b>Name Number</b> और <b>Birth Number</b> को मिलाकर बताता है कि नाम आपके लिए कितना शुभ है।<br>
-    Enter your full name (English) and Date of Birth to find compatibility.
+    यह Calculator आपके <b>Name Number</b> (Chaldean system से) और <b>Birth Number</b> को मिलाकर बताता है कि नाम आपके लिए कितना शुभ है।<br>
+    Enter your full name (English) and Date of Birth to check compatibility.
   </p>
 
   <div class="card">
@@ -94,19 +94,32 @@ a.back {
 </div>
 
 <script>
-const map = {A:1,J:1,S:1,B:2,K:2,T:2,C:3,L:3,U:3,D:4,M:4,V:4,E:5,N:5,W:5,F:6,O:6,X:6,G:7,P:7,Y:7,H:8,Q:8,Z:8,I:9,R:9};
+// 🔢 Chaldean Numerology Mapping
+const chaldean = {
+  A:1, I:1, J:1, Q:1, Y:1,
+  B:2, K:2, R:2,
+  C:3, G:3, L:3, S:3,
+  D:4, M:4, T:4,
+  E:5, H:5, N:5, X:5,
+  U:6, V:6, W:6,
+  O:7, Z:7,
+  F:8, P:8
+};
 
 function digitSum(n){return n.toString().split('').reduce((a,b)=>a+(+b),0)}
-function reduceKeepMasters(n){while(![11,22,33].includes(n)&&n>9){n=digitSum(n)}return n}
+function reduceChaldean(n){
+  while(n>8 && n!==9){n=digitSum(n)}
+  return n;
+}
 function nameNumber(name){
   const letters = name.toUpperCase().replace(/[^A-Z]/g,'').split('');
   let total=0;
-  letters.forEach(ch=>{total+=map[ch]||0});
-  return reduceKeepMasters(total);
+  letters.forEach(ch=>{total+=chaldean[ch]||0});
+  return reduceChaldean(total);
 }
 function birthNumber(dob){
   const [y,m,d]=dob.split('-').map(Number);
-  return reduceKeepMasters(d);
+  return reduceChaldean(d);
 }
 
 document.getElementById('calc').onclick=function(){
@@ -118,9 +131,10 @@ document.getElementById('calc').onclick=function(){
   const bNum=birthNumber(dob);
 
   let luckMsg="";
-  if(nNum===bNum){luckMsg="🌟 Perfect Match! Your name vibrates in harmony with your birth number.";}
-  else if(Math.abs(nNum-bNum)===1){luckMsg="✨ Good Match — minor adjustments can make it excellent.";}
-  else{luckMsg="⚠️ Not a good match — consider name correction for better alignment.";}
+  if(nNum===bNum){luckMsg="🌟 Perfect Match! आपका नाम आपके जन्मांक से पूरी तरह मेल खाता है।";}
+  else if(Math.abs(nNum-bNum)===1){luckMsg="✨ Good Match — थोड़ा बदलाव इसे और शुभ बना सकता है।";}
+  else{luckMsg="⚠️ Weak Match — नाम correction से जीवन में सुधार हो सकता है।";}
+  
   out.style.display='block';
   out.innerHTML=`<b>Name Number:</b> ${nNum}<br><b>Birth Number:</b> ${bNum}<br><br>${luckMsg}`;
 };

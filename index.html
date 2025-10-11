@@ -162,20 +162,34 @@
         </div>
       </div>
 
-      <div class="card">
-        <h3 style="margin-top:0">Quick Contact</h3>
-        <form action="thankyou.html" method="get">
-          <div style="display:grid; gap:10px">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="text" name="phone" placeholder="Phone / WhatsApp" required>
-            <input type="email" name="email" placeholder="Email (optional)">
-            <textarea name="msg" rows="3" placeholder="What would you like to know?"></textarea>
-            <input type="submit" value="Get Free Callback →">
-          </div>
-        </form>
-        <p style="font-size:.9rem;color:#6b7280;margin-top:8px">We usually reply within a few hours.</p>
-      </div>
+     <div class="card">
+  <h3 style="margin-top:0">Quick Contact</h3>
+
+  <form id="contactForm">
+    <div style="display:grid; gap:10px">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="text" id="phone" placeholder="Phone / WhatsApp" required>
+      <textarea id="msg" rows="3" placeholder="What would you like to know?" required></textarea>
+      <button type="submit">Get Free Callback →</button>
     </div>
+  </form>
+
+  <p style="font-size:.9rem;color:#6b7280;margin-top:8px">
+    We usually reply within a few hours.
+  </p>
+</div>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const name = encodeURIComponent(document.getElementById("name").value);
+  const phone = encodeURIComponent(document.getElementById("phone").value);
+  const msg = encodeURIComponent(document.getElementById("msg").value);
+  const waURL = `https://wa.me/918821967313?text=👋 Hello Hari,%0AI am *${name}* (%2B91${phone}).%0A%0AMessage:%0A${msg}`;
+  window.open(waURL, "_blank");
+});
+</script>
+
   </section>
 
   <section id="services">

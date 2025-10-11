@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Destiny (Life Path) Number Calculator</title>
+<style>
+:root{--brand:#6a0dad;--ink:#222;--muted:#6b7280;--hover:#f3e8ff}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:linear-gradient(180deg,#f8f5ff, #fff);color:var(--ink)}
+.container{max-width:800px;margin:0 auto;padding:28px 18px}
+h1{color:var(--brand);margin:0 0 8px}
+.card{background:#fff;border:1px solid #eee;border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,.06);padding:18px}
+input,button{width:100%;padding:12px;border-radius:10px;border:1.5px solid #ddd;font-size:1rem}
+input:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 4px rgba(106,13,173,.18)}
+button{background:var(--brand);border:0;color:#fff;font-weight:700;margin-top:10px;cursor:pointer;box-shadow:0 4px 12px rgba(106,13,173,.25)}
+button:hover{transform:translateY(-1px)}
+.result{margin-top:14px;padding:14px;border-radius:12px;background:var(--hover)}
+small{color:var(--muted)}
+a.back{display:inline-block;margin-top:18px;text-decoration:none;color:#fff;background:#111;padding:10px 14px;border-radius:10px}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Destiny (Life Path) Number</h1>
+  <p class="card">अपनी जन्मतिथि डालें। यह calculator कुल अंकों को जोड़कर single digit में reduce करता है और
+  <strong>11, 22, 33</strong> को master number मानकर रखता है।</p>
+
+  <div class="card">
+    <label for="dob"><b>Date of Birth</b> (DD-MM-YYYY)</label>
+    <input id="dob" type="date">
+    <button id="calc">Calculate</button>
+    <div id="out" class="result" style="display:none"></div>
+    <small>Note: अलग पद्धतियों में थोड़े अंतर हो सकते हैं—यह लोकप्रिय Pythagorean reduction है.</small>
+  </div>
+
+  <a class="back" href="index.html">← Back to Home</a>
+</div>
+
+<script>
+const meaning = {
+  1:"Leadership, initiative, independence.",
+  2:"Cooperation, harmony, sensitivity.",
+  3:"Creativity, expression, joy.",
+  4:"Stability, discipline, practicality.",
+  5:"Change, freedom, adventure.",
+  6:"Care, responsibility, family.",
+  7:"Analysis, spirituality, wisdom.",
+  8:"Power, ambition, material success.",
+  9:"Compassion, service, completion.",
+  11:"Intuition, inspiration, higher vision (Master 11).",
+  22:"Master builder, large-scale impact (Master 22).",
+  33:"Master teacher, compassion in action (Master 33)."
+};
+
+function digitSum(n){
+  return n.toString().split('').reduce((a,b)=>a+(+b),0);
+}
+function reduceKeepMasters(n){
+  while (![11,22,33].includes(n) && n>9){
+    n = digitSum(n);
+  }
+  return n;
+}
+document.getElementById('calc').onclick=function(){
+  const dob = document.getElementById('dob').value;
+  if(!dob){alert("Please select your birth date.");return;}
+  const nums = dob.replace(/\D/g,''); // yyyymmdd
+  let total = digitSum(nums);
+  total = reduceKeepMasters(total);
+  const box = document.getElementById('out');
+  box.style.display='block';
+  box.innerHTML = `<b>Your Destiny (Life Path) Number: ${total}</b><br>${meaning[total]||""}`;
+};
+</script>
+</body>
+</html>

@@ -322,11 +322,44 @@
   <!-- ===== SCRIPTS ===== -->
   <script>
     // mobile hamburger
-    (function(){
-      const burger=document.getElementById('sh-burger');
-      const links=document.getElementById('sh-links');
-      burger.addEventListener('click',()=>links.classList.toggle('active'));
-    })();
+   (function(){
+  const burger = document.getElementById('sh-burger');
+  const links  = document.getElementById('sh-links');
+
+  function openMenu(){
+    links.classList.add('active');
+    document.body.classList.add('no-scroll');
+    burger.setAttribute('aria-expanded','true');
+  }
+  function closeMenu(){
+    links.classList.remove('active');
+    document.body.classList.remove('no-scroll');
+    burger.setAttribute('aria-expanded','false');
+  }
+
+  burger.addEventListener('click', () => {
+    links.classList.contains('active') ? closeMenu() : openMenu();
+  });
+
+  // Menu link click → close
+  document.querySelectorAll('#sh-links a').forEach(a => {
+    a.addEventListener('click', closeMenu);
+  });
+
+  // Click outside → close
+  document.addEventListener('click', (e) => {
+    const header = document.querySelector('.site-header');
+    if (links.classList.contains('active') && !header.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  // ESC key → close
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+})();
+
 
     // WhatsApp-connected Quick Contact
     document.getElementById("contactForm").addEventListener("submit", function(e){

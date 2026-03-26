@@ -43,12 +43,37 @@ body { background:#ffffff; font-family: 'Segoe UI', sans-serif; }
 </div>
 </section>
 
-<section class="py-16 px-6 text-center">
-<h2 class="text-3xl font-bold mb-10">Our Services</h2>
-<div class="grid md:grid-cols-3 gap-6">
-<div class="card p-6 rounded"><i class="fa-solid fa-chart-line text-3xl text-yellow-500 mb-4"></i><h3 class="font-bold">AI Report</h3></div>
-<div class="card p-6 rounded"><i class="fa-solid fa-heart text-3xl text-red-500 mb-4"></i><h3 class="font-bold">Match Making</h3></div>
-<div class="card p-6 rounded"><i class="fa-solid fa-pen text-3xl text-blue-500 mb-4"></i><h3 class="font-bold">Name Correction</h3></div>
+<section class="py-10 px-4 text-center">
+<h2 class="text-2xl font-bold mb-6">Our Services</h2>
+
+<!-- Mobile horizontal small cards like PhonePe -->
+<div class="flex gap-3 overflow-x-auto md:grid md:grid-cols-3 md:gap-6">
+
+<div class="card min-w-[110px] p-4 rounded text-center">
+<i class="fa-solid fa-chart-line text-xl text-yellow-500 mb-2"></i>
+<p class="text-xs font-semibold">AI Report</p>
+</div>
+
+<div class="card min-w-[110px] p-4 rounded text-center">
+<i class="fa-solid fa-heart text-xl text-red-500 mb-2"></i>
+<p class="text-xs font-semibold">Match</p>
+</div>
+
+<div class="card min-w-[110px] p-4 rounded text-center">
+<i class="fa-solid fa-pen text-xl text-blue-500 mb-2"></i>
+<p class="text-xs font-semibold">Name Fix</p>
+</div>
+
+<div class="card min-w-[110px] p-4 rounded text-center">
+<i class="fa-solid fa-star text-xl text-purple-500 mb-2"></i>
+<p class="text-xs font-semibold">Remedies</p>
+</div>
+
+<div class="card min-w-[110px] p-4 rounded text-center">
+<i class="fa-solid fa-brain text-xl text-green-500 mb-2"></i>
+<p class="text-xs font-semibold">Prediction</p>
+</div>
+
 </div>
 </section>
 
@@ -94,4 +119,28 @@ function generateReport(){
     </div>
   `;
 
-  document.getElementById('resu
+  document.getElementById('result').innerHTML=html;
+}
+
+// Basic tests (console)
+console.assert(chaldeanNumber('RAHUL')>0,'Name calc failed');
+console.assert(lifePathNumber('2000-01-01')>0,'DOB calc failed');
+</script>
+
+<section class="py-16 px-6 bg-gray-50 text-center">
+<h2 class="text-3xl font-bold mb-10">Testimonials</h2>
+<div class="grid md:grid-cols-4 gap-6">
+<div class="card p-4"><img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-16 mx-auto rounded-full"><h4>Rahul</h4><p>Great!</p></div>
+<div class="card p-4"><img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-16 mx-auto rounded-full"><h4>Priya</h4><p>Accurate!</p></div>
+<div class="card p-4"><img src="https://randomuser.me/api/portraits/men/55.jpg" class="w-16 mx-auto rounded-full"><h4>Amit</h4><p>Best!</p></div>
+<div class="card p-4"><img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-16 mx-auto rounded-full"><h4>Sneha</h4><p>Helpful!</p></div>
+</div>
+</section>
+
+<footer class="bg-black text-white py-10 text-center">
+<p>Contact: 9300594567</p>
+<a href="https://wa.me/919300594567"><i class="fa-brands fa-whatsapp text-3xl text-green-500"></i></a>
+</footer>
+
+</body>
+</html>

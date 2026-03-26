@@ -19,106 +19,76 @@ body { background:#ffffff; font-family: 'Segoe UI', sans-serif; }
 
 <body>
 
+<!-- NAVBAR -->
 <header class="flex justify-between items-center px-6 py-4 border-b">
 <div class="flex items-center gap-2">
 <i class="fa-solid fa-star text-yellow-500"></i>
 <h1 class="font-bold text-lg">Numerous with Hari</h1>
 </div>
 <nav class="space-x-6 text-sm hidden md:block">
-<a href="#">Home</a>
-<a href="#">Services</a>
-<a href="#">Tools</a>
-<a href="#">Course</a>
+<a href="#home">Home</a>
+<a href="#tools">Tools</a>
+<a href="#course">Course</a>
 </nav>
 </header>
 
-<section class="hero-bg text-white text-center py-20 px-4">
-<h2 class="text-5xl font-bold mb-4">Discover Your Future With AI</h2>
-<p class="text-gray-300 mb-8 max-w-xl mx-auto">Get instant numerology insights</p>
+<!-- HERO -->
+<section id="home" class="hero-bg text-white text-center py-20 px-4">
+<h2 class="text-4xl font-bold mb-4">AI Numerology Report</h2>
+<p class="text-gray-300 mb-8">Enter DOB & Name to get full report instantly</p>
 
 <div class="bg-white p-6 rounded-xl max-w-md mx-auto text-black">
-<input id="dob" type="date" class="w-full p-3 border rounded mb-4">
-<button onclick="generateReport()" class="w-full bg-yellow-500 py-2 rounded font-bold btn-hover">Check Your Destiny</button>
+<input id="dob" type="date" class="w-full p-3 border rounded mb-3">
+<input id="fullName" type="text" placeholder="Enter your full name" class="w-full p-3 border rounded mb-3">
+<button onclick="generateReport()" class="w-full bg-yellow-500 py-2 rounded font-bold btn-hover">Generate Report</button>
 <div id="result" class="mt-6"></div>
 </div>
 </section>
 
-<section class="py-16 px-6 text-center">
-<h2 class="text-3xl font-bold mb-10">Our Services</h2>
+<!-- TOOLS -->
+<section id="tools" class="py-16 px-6 text-center bg-gray-50">
+<h2 class="text-3xl font-bold mb-10">Free Numerology Tools</h2>
 
 <div class="grid md:grid-cols-3 gap-6">
 
 <div class="card p-6 rounded">
-<i class="fa-solid fa-chart-line text-3xl text-yellow-500 mb-4"></i>
-<h3 class="font-bold">AI Report</h3>
-<p class="text-gray-500 text-sm">Deep personality & future analysis</p>
+<i class="fa-solid fa-pen-nib text-2xl mb-3"></i>
+<h3 class="font-bold mb-2">Name Correction</h3>
+<input id="nameInput" type="text" placeholder="Enter name" class="w-full p-2 border rounded mb-2">
+<button onclick="calcName()" class="bg-black text-white px-3 py-1 rounded btn-hover">Check</button>
+<p id="nameResult" class="text-sm mt-2 text-gray-600"></p>
 </div>
 
 <div class="card p-6 rounded">
-<i class="fa-solid fa-heart text-3xl text-red-500 mb-4"></i>
-<h3 class="font-bold">Match Making</h3>
-<p class="text-gray-500 text-sm">Love & compatibility insights</p>
+<i class="fa-solid fa-mobile-screen text-2xl mb-3"></i>
+<h3 class="font-bold mb-2">Mobile Numerology</h3>
+<input id="mobileInput" type="text" placeholder="Enter mobile number" class="w-full p-2 border rounded mb-2">
+<button onclick="calcMobile()" class="bg-black text-white px-3 py-1 rounded btn-hover">Check</button>
+<p id="mobileResult" class="text-sm mt-2 text-gray-600"></p>
 </div>
 
 <div class="card p-6 rounded">
-<i class="fa-solid fa-pen text-3xl text-blue-500 mb-4"></i>
-<h3 class="font-bold">Name Correction</h3>
-<p class="text-gray-500 text-sm">Improve luck with name change</p>
+<i class="fa-solid fa-hand text-2xl mb-3"></i>
+<h3 class="font-bold mb-2">Palm Reading</h3>
+<p class="text-sm text-gray-500">Basic guide:</p>
+<ul class="text-xs text-gray-500 mt-2 text-left">
+<li>Heart Line → Love</li>
+<li>Head Line → Mind</li>
+<li>Life Line → Health</li>
+</ul>
 </div>
 
 </div>
 </section>
 
-<script>
-function reduceNumber(num){ while(num>9 && num!==11 && num!==22){ num=num.toString().split('').reduce((a,b)=>a+parseInt(b),0);} return num; }
+<!-- COURSE -->
+<section id="course" class="py-16 text-center">
+<h2 class="text-3xl font-bold">Numerology Course</h2>
+<p class="text-gray-500 mt-2">Learn complete numerology</p>
+<button class="mt-6 bg-green-500 px-6 py-2 rounded text-white btn-hover">Buy ₹999</button>
+</section>
 
-function chaldeanNumber(name){
-  const map={A:1,I:1,J:1,Q:1,Y:1,B:2,K:2,R:2,C:3,G:3,L:3,S:3,D:4,M:4,T:4,E:5,H:5,N:5,X:5,U:6,V:6,W:6,O:7,Z:7,F:8,P:8};
-  name=name.toUpperCase().replace(/[^A-Z]/g,'');
-  let sum=0;
-  for(let c of name){ sum+=map[c]||0; }
-  return reduceNumber(sum);
-}
-
-function lifePathNumber(dob){
-  let sum=dob.replace(/-/g,'').split('').reduce((a,b)=>a+parseInt(b),0);
-  return reduceNumber(sum);
-}
-
-function generateReport(){
-  const dob=document.getElementById('dob').value;
-  if(!dob){ alert('Enter DOB'); return; }
-
-  const name=prompt('Enter your full name');
-  if(!name){ alert('Name required'); return; }
-
-  const life=lifePathNumber(dob);
-  const nameNum=chaldeanNumber(name);
-
-  let meaningMap={1:'Leader',2:'Emotional',3:'Creative',4:'Hardworking',5:'Adventurous',6:'Caring',7:'Spiritual',8:'Business',9:'Humanitarian'};
-
-  const html=`
-    <h3 class="text-xl font-bold">Life Path: ${life}</h3>
-    <p>Name Number: ${nameNum}</p>
-    <p class="text-gray-500">${meaningMap[life]||''}</p>
-
-    <div class="mt-4 bg-gray-100 p-4 rounded text-left">
-    🔮 Detailed Report<br><br>
-    Career: ${life==8?'Business success':'Stable growth'}<br>
-    Love: ${life==2?'Emotional':'Balanced'}<br>
-    Lucky Numbers: ${life}, ${nameNum}<br>
-    Advice: Stay disciplined
-    </div>
-  `;
-
-  document.getElementById('result').innerHTML=html;
-}
-
-// Basic tests (console)
-console.assert(chaldeanNumber('RAHUL')>0,'Name calc failed');
-console.assert(lifePathNumber('2000-01-01')>0,'DOB calc failed');
-</script>
-
+<!-- TESTIMONIAL -->
 <section class="py-16 px-6 bg-gray-50 text-center">
 <h2 class="text-3xl font-bold mb-10">Testimonials</h2>
 <div class="grid md:grid-cols-4 gap-6">
@@ -129,34 +99,44 @@ console.assert(lifePathNumber('2000-01-01')>0,'DOB calc failed');
 </div>
 </section>
 
+<!-- FOOTER -->
 <footer class="bg-black text-white py-10 px-6">
 <div class="grid md:grid-cols-3 gap-8">
-
 <div>
 <h3 class="text-xl font-bold mb-3">About Us</h3>
-<p class="text-gray-400 text-sm">Numerous with Hari helps you discover your life path using AI numerology, remedies and guidance.</p>
+<p class="text-gray-400 text-sm">AI Numerology platform for life guidance.</p>
 </div>
-
 <div>
-<h3 class="text-xl font-bold mb-3">Contact Us</h3>
-<p class="text-gray-400 text-sm">Phone: 9300594567</p>
-<p class="text-gray-400 text-sm">Email: info@numerous.com</p>
+<h3 class="text-xl font-bold mb-3">Contact</h3>
+<p class="text-gray-400 text-sm">9300594567</p>
 </div>
-
 <div class="text-center">
-<h3 class="text-xl font-bold mb-3">WhatsApp</h3>
-<a href="https://wa.me/919300594567" target="_blank" class="inline-block">
-<div class="relative group">
-<i class="fa-brands fa-whatsapp text-4xl text-green-500"></i>
-<div class="absolute inset-0 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition bg-green-400"></div>
+<a href="https://wa.me/919300594567"><i class="fa-brands fa-whatsapp text-4xl text-green-500"></i></a>
 </div>
-</a>
 </div>
-
-</div>
-
-<p class="text-center text-gray-500 mt-8 text-sm">© 2026 Numerous with Hari</p>
 </footer>
+
+<!-- JS -->
+<script>
+function reduce(num){ while(num>9 && num!==11 && num!==22){ num=num.toString().split('').reduce((a,b)=>a+parseInt(b),0);} return num; }
+
+function lifePath(dob){ return reduce(dob.replace(/-/g,'').split('').reduce((a,b)=>a+parseInt(b),0)); }
+
+function chaldean(name){ const map={A:1,I:1,J:1,Q:1,Y:1,B:2,K:2,R:2,C:3,G:3,L:3,S:3,D:4,M:4,T:4,E:5,H:5,N:5,X:5,U:6,V:6,W:6,O:7,Z:7,F:8,P:8}; name=name.toUpperCase().replace(/[^A-Z]/g,''); let s=0; for(let c of name){s+=map[c]||0;} return reduce(s);} 
+
+function generateReport(){
+ const dob=document.getElementById('dob').value;
+ const name=document.getElementById('fullName').value;
+ if(!dob||!name){ alert('Enter DOB & Name'); return; }
+ const lp=lifePath(dob);
+ const nn=chaldean(name);
+ document.getElementById('result').innerHTML=`<h3>Life Path: ${lp}</h3><p>Name Number: ${nn}</p>`;
+}
+
+function calcName(){ const n=document.getElementById('nameInput').value; if(!n) return alert('Enter name'); document.getElementById('nameResult').innerText='Name Number: '+chaldean(n);} 
+
+function calcMobile(){ const m=document.getElementById('mobileInput').value; if(!m) return alert('Enter number'); let s=m.split('').reduce((a,b)=>a+parseInt(b||0),0); document.getElementById('mobileResult').innerText='Mobile Number: '+reduce(s);} 
+</script>
 
 </body>
 </html>

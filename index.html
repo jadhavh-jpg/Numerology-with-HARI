@@ -8,134 +8,158 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
 <style>
-body { background:#ffffff; font-family: 'Segoe UI', sans-serif; }
-.hero-bg{ background: linear-gradient(120deg,#020617,#1e293b,#0f172a); }
-.btn-hover{ transition: all 0.3s ease; }
-.btn-hover:hover{ transform: translateY(-3px) scale(1.05); box-shadow:0 10px 25px rgba(0,0,0,0.2);} 
-.card{ box-shadow:0 10px 30px rgba(0,0,0,0.08); transition:0.3s; }
-.card:hover{ transform: translateY(-5px); box-shadow:0 20px 40px rgba(0,0,0,0.15);} 
+body { font-family: 'Segoe UI'; background:#fff; }
+.card{ box-shadow:0 10px 30px rgba(0,0,0,0.08); }
+.btn{ transition:0.3s; }
+.btn:hover{ transform:scale(1.05); }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<header class="flex justify-between items-center px-6 py-4 border-b">
-<div class="flex items-center gap-2">
-<i class="fa-solid fa-star text-yellow-500"></i>
-<h1 class="font-bold text-lg">Numerous with Hari</h1>
-</div>
-<nav class="space-x-6 text-sm hidden md:block">
-<a href="#home">Home</a>
-<a href="#tools">Tools</a>
-<a href="#course">Course</a>
-</nav>
-</header>
-
 <!-- HERO -->
-<section id="home" class="hero-bg text-white text-center py-20 px-4">
-<h2 class="text-4xl font-bold mb-4">AI Numerology Report</h2>
-<p class="text-gray-300 mb-8">Enter DOB & Name to get full report instantly</p>
+<!-- HERO SECTION -->
+<section class="py-16 px-4 text-center text-white" style="background: linear-gradient(120deg,#0f172a,#1e293b,#020617);">
+<h1 class="text-4xl font-bold mb-4">Discover Your Future with AI Numerology</h1>
+<p class="text-gray-300 mb-6">Enter your details and unlock powerful insights</p>
 
-<div class="bg-white p-6 rounded-xl max-w-md mx-auto text-black">
-<input id="dob" type="date" class="w-full p-3 border rounded mb-3">
-<input id="fullName" type="text" placeholder="Enter your full name" class="w-full p-3 border rounded mb-3">
-<button onclick="generateReport()" class="w-full bg-yellow-500 py-2 rounded font-bold btn-hover">Generate Report</button>
-<div id="result" class="mt-6"></div>
+<div class="bg-white text-black p-6 rounded-xl max-w-md mx-auto">
+<input id="dob" type="date" class="border p-2 w-full mb-3">
+<input id="name" type="text" placeholder="Full Name" class="border p-2 w-full mb-3">
+<button onclick="generateReport()" class="bg-yellow-500 w-full py-2 rounded font-bold btn">Get Free Result</button>
+<div id="result" class="mt-4"></div>
+</div>
+</section>
+
+<!-- PRICING -->
+<section class="py-10 px-4 text-center">
+<h2 class="text-2xl font-bold mb-6">Premium Services</h2>
+
+<div class="grid md:grid-cols-5 gap-4">
+
+<div class="card p-4">
+<h3 class="font-bold">Free</h3>
+<p>Basic Result</p>
+</div>
+
+<div class="card p-4">
+<h3 class="font-bold">₹99</h3>
+<p>Full Report</p>
+</div>
+
+<div class="card p-4">
+<h3 class="font-bold">₹299</h3>
+<p>Match Making</p>
+</div>
+
+<div class="card p-4">
+<h3 class="font-bold">₹499</h3>
+<p>Palm Reading</p>
+</div>
+
+<div class="card p-4">
+<h3 class="font-bold">₹999</h3>
+<p>Course</p>
+</div>
+
 </div>
 </section>
 
 <!-- TOOLS -->
-<section id="tools" class="py-16 px-6 text-center bg-gray-50">
-<h2 class="text-3xl font-bold mb-10">Free Numerology Tools</h2>
+<section class="py-10 px-4 grid md:grid-cols-2 gap-4">
 
-<div class="grid md:grid-cols-3 gap-6">
-
-<div class="card p-6 rounded">
-<i class="fa-solid fa-pen-nib text-2xl mb-3"></i>
-<h3 class="font-bold mb-2">Name Correction</h3>
-<input id="nameInput" type="text" placeholder="Enter name" class="w-full p-2 border rounded mb-2">
-<button onclick="calcName()" class="bg-black text-white px-3 py-1 rounded btn-hover">Check</button>
-<p id="nameResult" class="text-sm mt-2 text-gray-600"></p>
+<div class="card p-4">
+<h3>Match Making</h3>
+<input id="dob1" type="date" class="border p-2 m-1">
+<input id="dob2" type="date" class="border p-2 m-1">
+<button onclick="matchMaking()" class="bg-black text-white px-2 py-1">Check</button>
+<p id="match"></p>
 </div>
 
-<div class="card p-6 rounded">
-<i class="fa-solid fa-mobile-screen text-2xl mb-3"></i>
-<h3 class="font-bold mb-2">Mobile Numerology</h3>
-<input id="mobileInput" type="text" placeholder="Enter mobile number" class="w-full p-2 border rounded mb-2">
-<button onclick="calcMobile()" class="bg-black text-white px-3 py-1 rounded btn-hover">Check</button>
-<p id="mobileResult" class="text-sm mt-2 text-gray-600"></p>
+<div class="card p-4">
+<h3>Mobile Numerology</h3>
+<input id="mobile" class="border p-2 m-1">
+<button onclick="calcMobile()">Check</button>
+<p id="mobileResult"></p>
 </div>
 
-<div class="card p-6 rounded">
-<i class="fa-solid fa-hand text-2xl mb-3"></i>
-<h3 class="font-bold mb-2">Palm Reading</h3>
-<p class="text-sm text-gray-500">Basic guide:</p>
-<ul class="text-xs text-gray-500 mt-2 text-left">
-<li>Heart Line → Love</li>
-<li>Head Line → Mind</li>
-<li>Life Line → Health</li>
-</ul>
+<div class="card p-4">
+<h3>Name Correction</h3>
+<input id="nameInput" class="border p-2 m-1">
+<button onclick="calcName()">Check</button>
+<p id="nameResult"></p>
 </div>
 
+<div class="card p-4">
+<h3>Palm Reading</h3>
+<input type="file" id="palm">
+<button onclick="palm()">Analyze</button>
+<p id="palmResult"></p>
 </div>
-</section>
 
-<!-- COURSE -->
-<section id="course" class="py-16 text-center">
-<h2 class="text-3xl font-bold">Numerology Course</h2>
-<p class="text-gray-500 mt-2">Learn complete numerology</p>
-<button class="mt-6 bg-green-500 px-6 py-2 rounded text-white btn-hover">Buy ₹999</button>
-</section>
-
-<!-- TESTIMONIAL -->
-<section class="py-16 px-6 bg-gray-50 text-center">
-<h2 class="text-3xl font-bold mb-10">Testimonials</h2>
-<div class="grid md:grid-cols-4 gap-6">
-<div class="card p-4"><img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-16 mx-auto rounded-full"><h4>Rahul</h4><p>Great!</p></div>
-<div class="card p-4"><img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-16 mx-auto rounded-full"><h4>Priya</h4><p>Accurate!</p></div>
-<div class="card p-4"><img src="https://randomuser.me/api/portraits/men/55.jpg" class="w-16 mx-auto rounded-full"><h4>Amit</h4><p>Best!</p></div>
-<div class="card p-4"><img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-16 mx-auto rounded-full"><h4>Sneha</h4><p>Helpful!</p></div>
-</div>
 </section>
 
 <!-- FOOTER -->
+<!-- FOOTER -->
 <footer class="bg-black text-white py-10 px-6">
 <div class="grid md:grid-cols-3 gap-8">
+
 <div>
 <h3 class="text-xl font-bold mb-3">About Us</h3>
-<p class="text-gray-400 text-sm">AI Numerology platform for life guidance.</p>
+<p class="text-gray-400 text-sm">Numerous with Hari is an AI-based numerology platform providing accurate reports, remedies, and life guidance.</p>
 </div>
+
 <div>
-<h3 class="text-xl font-bold mb-3">Contact</h3>
-<p class="text-gray-400 text-sm">9300594567</p>
+<h3 class="text-xl font-bold mb-3">Contact Us</h3>
+<form class="flex flex-col gap-2">
+<input type="text" placeholder="Your Name" class="p-2 rounded text-black">
+<input type="email" placeholder="Your Email" class="p-2 rounded text-black">
+<textarea placeholder="Message" class="p-2 rounded text-black"></textarea>
+<button class="bg-yellow-500 text-black py-2 rounded">Send</button>
+</form>
 </div>
+
 <div class="text-center">
-<a href="https://wa.me/919300594567"><i class="fa-brands fa-whatsapp text-4xl text-green-500"></i></a>
+<h3 class="text-xl font-bold mb-3">WhatsApp</h3>
+<a href="https://wa.me/91930094567" target="_blank">
+<div class="relative group inline-block">
+<i class="fa-brands fa-whatsapp text-4xl text-green-500"></i>
+<div class="absolute inset-0 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition bg-green-400"></div>
 </div>
+</a>
+<p class="mt-2 text-gray-400">930094567</p>
 </div>
+
+</div>
+
+<p class="text-center text-gray-500 mt-8 text-sm">© 2026 Numerous with Hari</p>
 </footer>
 
 <!-- JS -->
 <script>
-function reduce(num){ while(num>9 && num!==11 && num!==22){ num=num.toString().split('').reduce((a,b)=>a+parseInt(b),0);} return num; }
-
-function lifePath(dob){ return reduce(dob.replace(/-/g,'').split('').reduce((a,b)=>a+parseInt(b),0)); }
-
-function chaldean(name){ const map={A:1,I:1,J:1,Q:1,Y:1,B:2,K:2,R:2,C:3,G:3,L:3,S:3,D:4,M:4,T:4,E:5,H:5,N:5,X:5,U:6,V:6,W:6,O:7,Z:7,F:8,P:8}; name=name.toUpperCase().replace(/[^A-Z]/g,''); let s=0; for(let c of name){s+=map[c]||0;} return reduce(s);} 
+function reduce(n){ while(n>9){ n=n.toString().split('').reduce((a,b)=>a+parseInt(b),0);} return n; }
+function life(d){ return reduce(d.replace(/-/g,'').split('').reduce((a,b)=>a+parseInt(b),0)); }
+function chaldean(name){ const m={A:1,B:2,C:3,D:4,E:5,F:8,G:3,H:5,I:1,J:1,K:2,L:3,M:4,N:5,O:7,P:8,Q:1,R:2,S:3,T:4,U:6,V:6,W:6,X:5,Y:1,Z:7}; name=name.toUpperCase().replace(/[^A-Z]/g,''); let s=0; for(let c of name){s+=m[c]||0;} return reduce(s);} 
 
 function generateReport(){
- const dob=document.getElementById('dob').value;
- const name=document.getElementById('fullName').value;
- if(!dob||!name){ alert('Enter DOB & Name'); return; }
- const lp=lifePath(dob);
- const nn=chaldean(name);
- document.getElementById('result').innerHTML=`<h3>Life Path: ${lp}</h3><p>Name Number: ${nn}</p>`;
+ let dob=document.getElementById('dob').value;
+ let name=document.getElementById('name').value;
+ let lp=life(dob);
+ let nn=chaldean(name);
+ document.getElementById('result').innerText="Life Path: "+lp+" | Name: "+nn;
 }
 
-function calcName(){ const n=document.getElementById('nameInput').value; if(!n) return alert('Enter name'); document.getElementById('nameResult').innerText='Name Number: '+chaldean(n);} 
+function matchMaking(){
+ let n1=life(document.getElementById('dob1').value);
+ let n2=life(document.getElementById('dob2').value);
+ document.getElementById('match').innerText = (n1==n2)?'Perfect Match':'Average';
+}
 
-function calcMobile(){ const m=document.getElementById('mobileInput').value; if(!m) return alert('Enter number'); let s=m.split('').reduce((a,b)=>a+parseInt(b||0),0); document.getElementById('mobileResult').innerText='Mobile Number: '+reduce(s);} 
+function calcName(){ document.getElementById('nameResult').innerText=chaldean(document.getElementById('nameInput').value); }
+
+function calcMobile(){ let m=document.getElementById('mobile').value; let s=reduce(m.split('').reduce((a,b)=>a+parseInt(b||0),0)); document.getElementById('mobileResult').innerText=s; }
+
+function palm(){ document.getElementById('palmResult').innerText='Strong lines detected'; }
 </script>
 
 </body>

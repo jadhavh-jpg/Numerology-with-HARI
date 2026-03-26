@@ -9,40 +9,22 @@
 
 <style>
 body { background:#ffffff; font-family: 'Segoe UI', sans-serif; }
-
-.hero-bg{
-  background: linear-gradient(120deg,#020617,#1e293b,#0f172a);
-}
-
-.btn-hover{
-  transition: all 0.3s ease;
-}
-.btn-hover:hover{
-  transform: translateY(-3px) scale(1.05);
-  box-shadow:0 10px 25px rgba(0,0,0,0.2);
-}
-
-.card{
-  box-shadow:0 10px 30px rgba(0,0,0,0.08);
-  transition:0.3s;
-}
-.card:hover{
-  transform: translateY(-5px);
-  box-shadow:0 20px 40px rgba(0,0,0,0.15);
-}
-
+.hero-bg{ background: linear-gradient(120deg,#020617,#1e293b,#0f172a); }
+.btn-hover{ transition: all 0.3s ease; }
+.btn-hover:hover{ transform: translateY(-3px) scale(1.05); box-shadow:0 10px 25px rgba(0,0,0,0.2);} 
+.card{ box-shadow:0 10px 30px rgba(0,0,0,0.08); transition:0.3s; }
+.card:hover{ transform: translateY(-5px); box-shadow:0 20px 40px rgba(0,0,0,0.15);} 
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <header class="flex justify-between items-center px-6 py-4 border-b">
 <div class="flex items-center gap-2">
 <i class="fa-solid fa-star text-yellow-500"></i>
 <h1 class="font-bold text-lg">Numerous with Hari</h1>
 </div>
-<nav class="space-x-6 text-sm">
+<nav class="space-x-6 text-sm hidden md:block">
 <a href="#">Home</a>
 <a href="#">Services</a>
 <a href="#">Tools</a>
@@ -50,258 +32,66 @@ body { background:#ffffff; font-family: 'Segoe UI', sans-serif; }
 </nav>
 </header>
 
-<!-- HERO SECTION -->
 <section class="hero-bg text-white text-center py-20 px-4">
-
-<h2 class="text-5xl font-bold mb-4 leading-tight">
-Discover Your Future With AI
-</h2>
-
-<p class="text-gray-300 mb-8 max-w-xl mx-auto">
-Get instant numerology insights, remedies, and success guidance powered by AI.
-</p>
+<h2 class="text-5xl font-bold mb-4">Discover Your Future With AI</h2>
+<p class="text-gray-300 mb-8 max-w-xl mx-auto">Get instant numerology insights</p>
 
 <div class="bg-white p-6 rounded-xl max-w-md mx-auto text-black">
 <input id="dob" type="date" class="w-full p-3 border rounded mb-4">
-
-<button onclick="generateReport()" class="w-full bg-yellow-500 py-2 rounded font-bold btn-hover">
-Check Your Destiny
-</button>
-
+<button onclick="generateReport()" class="w-full bg-yellow-500 py-2 rounded font-bold btn-hover">Check Your Destiny</button>
 <div id="result" class="mt-6"></div>
 </div>
-
 </section>
 
-<!-- SERVICES -->
 <section class="py-16 px-6 text-center">
 <h2 class="text-3xl font-bold mb-10">Our Services</h2>
-
 <div class="grid md:grid-cols-3 gap-6">
-
-<div class="card p-6 rounded">
-<i class="fa-solid fa-chart-line text-3xl text-yellow-500 mb-4"></i>
-<h3 class="font-bold">AI Report</h3>
-<p class="text-gray-500 text-sm">Deep personality & future analysis</p>
-</div>
-
-<div class="card p-6 rounded">
-<i class="fa-solid fa-heart text-3xl text-red-500 mb-4"></i>
-<h3 class="font-bold">Match Making</h3>
-<p class="text-gray-500 text-sm">Love & compatibility insights</p>
-</div>
-
-<div class="card p-6 rounded">
-<i class="fa-solid fa-pen text-3xl text-blue-500 mb-4"></i>
-<h3 class="font-bold">Name Correction</h3>
-<p class="text-gray-500 text-sm">Improve luck with name change</p>
-</div>
-
+<div class="card p-6 rounded"><i class="fa-solid fa-chart-line text-3xl text-yellow-500 mb-4"></i><h3 class="font-bold">AI Report</h3></div>
+<div class="card p-6 rounded"><i class="fa-solid fa-heart text-3xl text-red-500 mb-4"></i><h3 class="font-bold">Match Making</h3></div>
+<div class="card p-6 rounded"><i class="fa-solid fa-pen text-3xl text-blue-500 mb-4"></i><h3 class="font-bold">Name Correction</h3></div>
 </div>
 </section>
 
-<!-- FREE TOOLS -->
-<section class="py-16 px-6 text-center bg-gray-50">
-<h2 class="text-3xl font-bold mb-10">Free Tools</h2>
-
-<div class="grid md:grid-cols-3 gap-6">
-
-<div class="card p-6 rounded">
-<i class="fa-solid fa-calendar text-2xl mb-3"></i>
-<p>Personal Year Calculator</p>
-</div>
-
-<div class="card p-6 rounded">
-<i class="fa-solid fa-brain text-2xl mb-3"></i>
-<p>Numerology Predictor</p>
-</div>
-
-<div class="card p-6 rounded">
-<i class="fa-solid fa-people-arrows text-2xl mb-3"></i>
-<p>Compatibility Checker</p>
-</div>
-
-</div>
-</section>
-
-<!-- COURSE -->
-<section class="py-16 text-center">
-<h2 class="text-3xl font-bold">Numerology Course</h2>
-<p class="text-gray-500 mt-2">Master numerology from beginner to pro</p>
-
-<button class="mt-6 bg-green-500 px-6 py-2 rounded text-white btn-hover">
-Buy Course ₹999
-</button>
-</section>
-
-<!-- SCRIPT -->
 <script>
-function reduceNumber(num){
- while(num>9){ num=num.toString().split('').reduce((a,b)=>a+parseInt(b),0);} return num;
-}
+function reduceNumber(num){ while(num>9 && num!==11 && num!==22){ num=num.toString().split('').reduce((a,b)=>a+parseInt(b),0);} return num; }
 
 function chaldeanNumber(name){
-  const map = {
-    A:1,I:1,J:1,Q:1,Y:1,
-    B:2,K:2,R:2,
-    C:3,G:3,L:3,S:3,
-    D:4,M:4,T:4,
-    E:5,H:5,N:5,X:5,
-    U:6,V:6,W:6,
-    O:7,Z:7,
-    F:8,P:8
-  };
-
-  name = name.toUpperCase().replace(/[^A-Z]/g,'');
-  let sum = 0;
-  for(let char of name){
-    sum += map[char] || 0;
-  }
-
-  while(sum>9 && sum!==11 && sum!==22){
-    sum = sum.toString().split('').reduce((a,b)=>a+parseInt(b),0);
-  }
-
-  return sum;
+  const map={A:1,I:1,J:1,Q:1,Y:1,B:2,K:2,R:2,C:3,G:3,L:3,S:3,D:4,M:4,T:4,E:5,H:5,N:5,X:5,U:6,V:6,W:6,O:7,Z:7,F:8,P:8};
+  name=name.toUpperCase().replace(/[^A-Z]/g,'');
+  let sum=0;
+  for(let c of name){ sum+=map[c]||0; }
+  return reduceNumber(sum);
 }
 
 function lifePathNumber(dob){
-  let sum = dob.replace(/-/g,'').split('').reduce((a,b)=>a+parseInt(b),0);
-  while(sum>9 && sum!==11 && sum!==22){
-    sum = sum.toString().split('').reduce((a,b)=>a+parseInt(b),0);
-  }
-  return sum;
+  let sum=dob.replace(/-/g,'').split('').reduce((a,b)=>a+parseInt(b),0);
+  return reduceNumber(sum);
 }
 
 function generateReport(){
- const dob=document.getElementById('dob').value;
- if(!dob) return alert('Enter DOB');
+  const dob=document.getElementById('dob').value;
+  if(!dob){ alert('Enter DOB'); return; }
 
- const name = prompt('Enter your full name for Chaldean calculation');
- if(!name) return alert('Name required');
+  const name=prompt('Enter your full name');
+  if(!name){ alert('Name required'); return; }
 
- const lifePath = lifePathNumber(dob);
- const nameNumber = chaldeanNumber(name);
+  const life=lifePathNumber(dob);
+  const nameNum=chaldeanNumber(name);
 
- let meaning = '';
- if(lifePath==1) meaning='Leader, independent';
- else if(lifePath==2) meaning='Emotional, cooperative';
- else if(lifePath==3) meaning='Creative, expressive';
- else if(lifePath==4) meaning='Hardworking, practical';
- else if(lifePath==5) meaning='Adventurous, freedom lover';
- else if(lifePath==6) meaning='Responsible, caring';
- else if(lifePath==7) meaning='Spiritual, thinker';
- else if(lifePath==8) meaning='Powerful, business minded';
- else if(lifePath==9) meaning='Humanitarian';
+  let meaningMap={1:'Leader',2:'Emotional',3:'Creative',4:'Hardworking',5:'Adventurous',6:'Caring',7:'Spiritual',8:'Business',9:'Humanitarian'};
 
- document.getElementById('result').innerHTML=`
- <h3 class='text-xl font-bold'>Life Path: ${lifePath}</h3>
- <p>Name Number (Chaldean): ${nameNumber}</p>
- <p class='text-gray-500 mt-2'>${meaning}</p>
+  const html=`
+    <h3 class="text-xl font-bold">Life Path: ${life}</h3>
+    <p>Name Number: ${nameNum}</p>
+    <p class="text-gray-500">${meaningMap[life]||''}</p>
 
- <div class='mt-4 bg-gray-100 p-4 rounded text-left'>
- 🔮 Detailed Report
+    <div class="mt-4 bg-gray-100 p-4 rounded text-left">
+    🔮 Detailed Report<br><br>
+    Career: ${life==8?'Business success':'Stable growth'}<br>
+    Love: ${life==2?'Emotional':'Balanced'}<br>
+    Lucky Numbers: ${life}, ${nameNum}<br>
+    Advice: Stay disciplined
+    </div>
+  `;
 
-
- Career: ${lifePath==8?'Business success':'Stable growth'}
-
- Love: ${lifePath==2?'Emotional bonding':'Balanced relationship'}
-
- Lucky Numbers: ${lifePath}, ${nameNumber}
-
- Advice: Focus on discipline and consistency
- </div>
- `;
-}</h3>
- <p class='text-gray-500 mt-2'>⚠️ Hidden insight waiting...</p>
- <button onclick="unlock()" class='mt-4 bg-black text-white px-4 py-2 rounded btn-hover'>Unlock Full Report</button>
- `;
-}
-
-function unlock(){
- document.getElementById('result').innerHTML+=`
- <div class='mt-4 bg-gray-100 p-4 rounded text-left'>
- 🔮 AI Report\n\nCareer: Leadership\nLove: Emotional\nFuture: Growth phase
- </div>
- `;
-}
-</script>
-
-
-
-<!-- TESTIMONIALS -->
-<section class="py-16 px-6 bg-gray-50 text-center">
-<h2 class="text-3xl font-bold mb-10">What Our Clients Say</h2>
-<div class="grid md:grid-cols-4 gap-6">
-
-<div class="card p-6 rounded text-center">
-<img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-16 h-16 mx-auto rounded-full mb-3">
-<h4 class="font-bold">Rahul Sharma</h4>
-<p class="text-sm text-gray-500">"Amazing experience! My life changed after this report."</p>
-</div>
-
-<div class="card p-6 rounded text-center">
-<img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-16 h-16 mx-auto rounded-full mb-3">
-<h4 class="font-bold">Priya Verma</h4>
-<p class="text-sm text-gray-500">"Very accurate predictions. Highly recommended."</p>
-</div>
-
-<div class="card p-6 rounded text-center">
-<img src="https://randomuser.me/api/portraits/men/55.jpg" class="w-16 h-16 mx-auto rounded-full mb-3">
-<h4 class="font-bold">Amit Patel</h4>
-<p class="text-sm text-gray-500">"Best numerology service I have ever used."</p>
-</div>
-
-<div class="card p-6 rounded text-center">
-<img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-16 h-16 mx-auto rounded-full mb-3">
-<h4 class="font-bold">Sneha Joshi</h4>
-<p class="text-sm text-gray-500">"Clear guidance and powerful remedies."</p>
-</div>
-
-</div>
-</section>
-
-<!-- FOOTER -->
-<footer class="bg-black text-white py-10 px-6">
-<div class="grid md:grid-cols-3 gap-8">
-
-<div>
-<h3 class="text-xl font-bold mb-3">About Us</h3>
-<p class="text-gray-400 text-sm">Numerous with Hari helps you discover your life path using AI numerology, remedies and guidance.</p>
-</div>
-
-<div>
-<h3 class="text-xl font-bold mb-3">Contact Us</h3>
-<p class="text-gray-400 text-sm">Phone: 9300594567</p>
-<p class="text-gray-400 text-sm">Email: info@numerous.com</p>
-</div>
-
-<div class="text-center">
-<h3 class="text-xl font-bold mb-3">WhatsApp</h3>
-<a href="https://wa.me/919300594567" target="_blank" class="inline-block">
-<div class="relative group">
-<i class="fa-brands fa-whatsapp text-4xl text-green-500"></i>
-<div class="absolute inset-0 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition bg-green-400"></div>
-</div>
-</a>
-</div>
-
-</div>
-
-<p class="text-center text-gray-500 mt-8 text-sm">© 2026 Numerous with Hari</p>
-</footer>
-
-<!-- MOBILE MENU -->
-<script>
-const menuBtn = document.createElement('button');
-menuBtn.innerHTML = '☰';
-menuBtn.className = 'md:hidden fixed top-4 right-4 text-2xl';
-document.body.appendChild(menuBtn);
-
-menuBtn.onclick = () => {
- alert('Menu click - you can expand this into full mobile nav');
-};
-</script>
-
-</body>
-</html>
+  document.getElementById('resu

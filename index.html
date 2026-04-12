@@ -2,164 +2,135 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>Numerology with Hari - Palm Reading</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Numerous with Hari</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
 <style>
-body { font-family: 'Segoe UI'; background:#fff; }
-.card{ box-shadow:0 10px 30px rgba(0,0,0,0.08); }
-.btn{ transition:0.3s; }
-.btn:hover{ transform:scale(1.05); }
+body {
+  font-family: Arial;
+  margin: 0;
+  display: flex;
+  height: 100vh;
+}
+
+/* LEFT PANEL */
+.left {
+  width: 40%;
+  background: #111;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.left img {
+  width: 80%;
+  border-radius: 10px;
+}
+
+/* RIGHT PANEL */
+.right {
+  width: 60%;
+  padding: 20px;
+}
+
+input, button {
+  padding: 10px;
+  margin: 10px 0;
+  width: 100%;
+}
+
+#preview {
+  width: 200px;
+  margin-top: 10px;
+}
+
+.report {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f3f3f3;
+}
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<!-- HERO SECTION -->
-<section class="py-16 px-4 text-center text-white" style="background: linear-gradient(120deg,#0f172a,#1e293b,#020617);">
-<h1 class="text-4xl font-bold mb-4">Discover Your Future with AI Numerology</h1>
-<p class="text-gray-300 mb-6">Enter your details and unlock powerful insights</p>
-
-<div class="bg-white text-black p-6 rounded-xl max-w-md mx-auto">
-<input id="dob" type="date" class="border p-2 w-full mb-3">
-<input id="name" type="text" placeholder="Full Name" class="border p-2 w-full mb-3">
-<button onclick="generateReport()" class="bg-yellow-500 w-full py-2 rounded font-bold btn">Get Free Result</button>
-<div id="result" class="mt-4"></div>
-</div>
-</section>
-
-<!-- PRICING -->
-<section class="py-10 px-4 text-center">
-<h2 class="text-2xl font-bold mb-6">Premium Services</h2>
-
-<div class="grid md:grid-cols-5 gap-4">
-
-<div class="card p-4">
-<h3 class="font-bold">Free</h3>
-<p>Basic Result</p>
+<!-- LEFT SIDE -->
+<div class="left">
+  <h2>🔮 Numerology with Hari</h2>
+  <p>AI Palm Reading System</p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Palmistry_hand.jpg/320px-Palmistry_hand.jpg">
 </div>
 
-<div class="card p-4">
-<h3 class="font-bold">₹99</h3>
-<p>Full Report</p>
-</div>
+<!-- RIGHT SIDE -->
+<div class="right">
 
-<div class="card p-4">
-<h3 class="font-bold">₹299</h3>
-<p>Match Making</p>
-</div>
+  <h3>Upload Your Palm Image</h3>
 
-<div class="card p-4">
-<h3 class="font-bold">₹499</h3>
-<p>Palm Reading</p>
-</div>
+  <input type="text" id="name" placeholder="Enter Your Name">
 
-<div class="card p-4">
-<h3 class="font-bold">₹999</h3>
-<p>Course</p>
-</div>
+  <input type="file" accept="image/*" capture="environment" id="imageInput">
 
-</div>
-</section>
+  <img id="preview">
 
-<!-- TOOLS -->
-<section class="py-10 px-4 grid md:grid-cols-2 gap-4">
+  <button onclick="generateReport()">Generate Report</button>
 
-<div class="card p-4">
-<h3>Match Making</h3>
-<input id="dob1" type="date" class="border p-2 m-1">
-<input id="dob2" type="date" class="border p-2 m-1">
-<button onclick="matchMaking()" class="bg-black text-white px-2 py-1">Check</button>
-<p id="match"></p>
-</div>
+  <div id="output" class="report"></div>
 
-<div class="card p-4">
-<h3>Mobile Numerology</h3>
-<input id="mobile" class="border p-2 m-1">
-<button onclick="calcMobile()">Check</button>
-<p id="mobileResult"></p>
-</div>
-
-<div class="card p-4">
-<h3>Name Correction</h3>
-<input id="nameInput" class="border p-2 m-1">
-<button onclick="calcName()">Check</button>
-<p id="nameResult"></p>
-</div>
-
-<div class="card p-4">
-<h3>Palm Reading</h3>
-<input type="file" id="palm">
-<button onclick="palm()">Analyze</button>
-<p id="palmResult"></p>
-</div>
-
-</section>
-
-<!-- FOOTER -->
-<!-- FOOTER -->
-<footer class="bg-black text-white py-10 px-6">
-<div class="grid md:grid-cols-3 gap-8">
-
-<div>
-<h3 class="text-xl font-bold mb-3">About Us</h3>
-<p class="text-gray-400 text-sm">Numerous with Hari is an AI-based numerology platform providing accurate reports, remedies, and life guidance.</p>
-</div>
-
-<div>
-<h3 class="text-xl font-bold mb-3">Contact Us</h3>
-<form class="flex flex-col gap-2">
-<input type="text" placeholder="Your Name" class="p-2 rounded text-black">
-<input type="email" placeholder="Your Email" class="p-2 rounded text-black">
-<textarea placeholder="Message" class="p-2 rounded text-black"></textarea>
-<button class="bg-yellow-500 text-black py-2 rounded">Send</button>
-</form>
-</div>
-
-<div class="text-center">
-<h3 class="text-xl font-bold mb-3">WhatsApp</h3>
-<a href="https://wa.me/91930094567" target="_blank">
-<div class="relative group inline-block">
-<i class="fa-brands fa-whatsapp text-4xl text-green-500"></i>
-<div class="absolute inset-0 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition bg-green-400"></div>
-</div>
-</a>
-<p class="mt-2 text-gray-400">930094567</p>
-</div>
+  <button onclick="downloadPDF()">Download PDF</button>
 
 </div>
 
-<p class="text-center text-gray-500 mt-8 text-sm">© 2026 Numerous with Hari</p>
-</footer>
-
-<!-- JS -->
 <script>
-function reduce(n){ while(n>9){ n=n.toString().split('').reduce((a,b)=>a+parseInt(b),0);} return n; }
-function life(d){ return reduce(d.replace(/-/g,'').split('').reduce((a,b)=>a+parseInt(b),0)); }
-function chaldean(name){ const m={A:1,B:2,C:3,D:4,E:5,F:8,G:3,H:5,I:1,J:1,K:2,L:3,M:4,N:5,O:7,P:8,Q:1,R:2,S:3,T:4,U:6,V:6,W:6,X:5,Y:1,Z:7}; name=name.toUpperCase().replace(/[^A-Z]/g,''); let s=0; for(let c of name){s+=m[c]||0;} return reduce(s);} 
 
-function generateReport(){
- let dob=document.getElementById('dob').value;
- let name=document.getElementById('name').value;
- let lp=life(dob);
- let nn=chaldean(name);
- document.getElementById('result').innerText="Life Path: "+lp+" | Name: "+nn;
+// IMAGE PREVIEW
+document.getElementById("imageInput").onchange = function(event) {
+  const reader = new FileReader();
+  reader.onload = function() {
+    document.getElementById("preview").src = reader.result;
+  }
+  reader.readAsDataURL(event.target.files[0]);
 }
 
-function matchMaking(){
- let n1=life(document.getElementById('dob1').value);
- let n2=life(document.getElementById('dob2').value);
- document.getElementById('match').innerText = (n1==n2)?'Perfect Match':'Average';
+// GENERATE REPORT (STATIC DEMO - later AI connect karenge)
+function generateReport() {
+  const name = document.getElementById("name").value;
+
+  const report = `
+  <h3>🔍 Palm Analysis Report - ${name}</h3>
+
+  <b>Past:</b><br>
+  Aapki life me early struggle aur confusion raha hai.
+
+  <br><br>
+  <b>Present:</b><br>
+  Abhi aap growth aur transition phase me ho. Career focus strong hai.
+
+  <br><br>
+  <b>Future:</b><br>
+  35–45 age me strong financial growth aur stability milegi.
+
+  <br><br>
+  <b>Remedies:</b><br>
+  ✔ Daily consistency<br>
+  ✔ Hanuman Chalisa<br>
+  ✔ Focus on one skill<br>
+  ✔ Avoid overthinking
+  `;
+
+  document.getElementById("output").innerHTML = report;
 }
 
-function calcName(){ document.getElementById('nameResult').innerText=chaldean(document.getElementById('nameInput').value); }
+// PDF DOWNLOAD
+function downloadPDF() {
+  const content = document.getElementById("output").innerText;
 
-function calcMobile(){ let m=document.getElementById('mobile').value; let s=reduce(m.split('').reduce((a,b)=>a+parseInt(b||0),0)); document.getElementById('mobileResult').innerText=s; }
+  const blob = new Blob([content], { type: "text/plain" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "Palm_Report.txt";
+  link.click();
+}
 
-function palm(){ document.getElementById('palmResult').innerText='Strong lines detected'; }
 </script>
 
 </body>

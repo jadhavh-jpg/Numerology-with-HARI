@@ -2,133 +2,200 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Numerology with Hari - Palm Reading</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Numerology with Hari</title>
 
 <style>
-body {
-  font-family: Arial;
-  margin: 0;
-  display: flex;
-  height: 100vh;
+body {margin:0;font-family:Arial;background:#f5f5f5}
+
+/* HERO */
+.hero{
+  background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)),
+  url('https://images.unsplash.com/photo-1519681393784-d120267933ba');
+  background-size:cover;
+  color:white;
+  text-align:center;
+  padding:80px 20px;
 }
 
-/* LEFT PANEL */
-.left {
-  width: 40%;
-  background: #111;
-  color: white;
-  padding: 20px;
-  text-align: center;
+.hero h1{font-size:36px;margin:0}
+.hero p{color:#ddd}
+
+.btn{
+  display:inline-block;
+  padding:12px 25px;
+  margin:10px;
+  border-radius:30px;
+  text-decoration:none;
+  color:white;
+  transition:0.3s;
 }
 
-.left img {
-  width: 80%;
-  border-radius: 10px;
+.call{background:#ff9800}
+.whatsapp{background:#25D366}
+
+.btn:hover{transform:scale(1.05)}
+
+/* CONTAINER */
+.container{max-width:1200px;margin:auto;padding:20px}
+
+/* CARD */
+.card{
+  background:white;
+  padding:20px;
+  border-radius:10px;
+  margin-bottom:20px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* RIGHT PANEL */
-.right {
-  width: 60%;
-  padding: 20px;
+/* FLEX */
+.flex{display:flex;gap:20px;flex-wrap:wrap}
+.left,.right{flex:1}
+
+/* INPUT */
+input,button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border-radius:8px;
+  border:1px solid #ccc;
 }
 
-input, button {
-  padding: 10px;
-  margin: 10px 0;
-  width: 100%;
+button{
+  background:#4CAF50;
+  color:white;
+  border:none;
+  cursor:pointer;
 }
 
-#preview {
-  width: 200px;
-  margin-top: 10px;
+button:hover{background:#45a049}
+
+/* RESULT */
+.result{margin-top:10px;background:#eef;padding:15px;border-radius:8px}
+
+/* TESTIMONIAL */
+.testimonial{
+  background:#222;
+  color:white;
+  padding:20px;
+  border-radius:10px;
+  margin:10px;
 }
 
-.report {
-  margin-top: 20px;
-  padding: 15px;
-  background: #f3f3f3;
+/* FOOTER */
+.footer{
+  background:#111;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .hero h1{font-size:26px}
+  .flex{flex-direction:column}
 }
 </style>
 </head>
 
 <body>
 
-<!-- LEFT SIDE -->
-<div class="left">
-  <h2>🔮 Numerology with Hari</h2>
-  <p>AI Palm Reading System</p>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Palmistry_hand.jpg/320px-Palmistry_hand.jpg">
+<!-- HERO -->
+<div class="hero">
+  <h1>🔮 Numerology with Hari</h1>
+  <p>Unlock Your Destiny with Numbers</p>
+
+  <a href="tel:9300594567" class="btn call">📞 Call: 9300594567</a>
+  <a href="https://wa.me/919300594567" class="btn whatsapp">💬 WhatsApp</a>
 </div>
 
-<!-- RIGHT SIDE -->
-<div class="right">
+<div class="container">
 
-  <h3>Upload Your Palm Image</h3>
+  <!-- CALCULATOR -->
+  <div class="card flex">
 
-  <input type="text" id="name" placeholder="Enter Your Name">
+    <div class="left">
+      <h2>Numerology Calculator</h2>
 
-  <input type="file" accept="image/*" capture="environment" id="imageInput">
+      <label>Full Name</label>
+      <input type="text" id="name">
 
-  <img id="preview">
+      <label>Date of Birth</label>
+      <input type="date" id="dob">
 
-  <button onclick="generateReport()">Generate Report</button>
+      <button onclick="calculate()">Calculate</button>
+    </div>
 
-  <div id="output" class="report"></div>
+    <div class="right">
+      <h2>Your Result</h2>
+      <div id="result" class="result">Enter details</div>
+    </div>
 
-  <button onclick="downloadPDF()">Download PDF</button>
+  </div>
 
+  <!-- PAID REPORT -->
+  <div class="card">
+    <h2>Get Detailed Report ₹99</h2>
+    <p>Full life prediction + remedies</p>
+
+    <button onclick="payNow()">Pay ₹99</button>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="card">
+    <h2>What People Say</h2>
+
+    <div class="testimonial">⭐ "Amazing prediction!" - Rahul</div>
+    <div class="testimonial">⭐ "Accurate reading" - Sneha</div>
+    <div class="testimonial">⭐ "Life changing advice" - Amit</div>
+
+  </div>
+
+</div>
+
+<div class="footer">
+  © 2026 Numerology with Hari
 </div>
 
 <script>
 
-// IMAGE PREVIEW
-document.getElementById("imageInput").onchange = function(event) {
-  const reader = new FileReader();
-  reader.onload = function() {
-    document.getElementById("preview").src = reader.result;
+function calculate(){
+  let name = document.getElementById("name").value.toLowerCase();
+  let dob = document.getElementById("dob").value;
+
+  if(name=="" || dob==""){
+    alert("Enter details");
+    return;
   }
-  reader.readAsDataURL(event.target.files[0]);
-}
 
-// GENERATE REPORT (STATIC DEMO - later AI connect karenge)
-function generateReport() {
-  const name = document.getElementById("name").value;
+  // name number
+  let sum = 0;
+  for(let i=0;i<name.length;i++){
+    let c = name.charCodeAt(i);
+    if(c>=97 && c<=122) sum += (c-96);
+  }
+  let nameNum = sum % 9 || 9;
 
-  const report = `
-  <h3>🔍 Palm Analysis Report - ${name}</h3>
+  // life path
+  let digits = dob.replaceAll("-","");
+  let total = 0;
+  for(let i of digits) total += parseInt(i);
+  let lifePath = total % 9 || 9;
 
-  <b>Past:</b><br>
-  Aapki life me early struggle aur confusion raha hai.
+  // pinnacle simple
+  let pinnacle = (nameNum + lifePath) % 9 || 9;
 
-  <br><br>
-  <b>Present:</b><br>
-  Abhi aap growth aur transition phase me ho. Career focus strong hai.
-
-  <br><br>
-  <b>Future:</b><br>
-  35–45 age me strong financial growth aur stability milegi.
-
-  <br><br>
-  <b>Remedies:</b><br>
-  ✔ Daily consistency<br>
-  ✔ Hanuman Chalisa<br>
-  ✔ Focus on one skill<br>
-  ✔ Avoid overthinking
+  document.getElementById("result").innerHTML = `
+  <b>Name Number:</b> ${nameNum}<br>
+  <b>Life Path:</b> ${lifePath}<br>
+  <b>Pinnacle Number:</b> ${pinnacle}<br><br>
+  You are strong, ambitious and success oriented 🔥
   `;
-
-  document.getElementById("output").innerHTML = report;
 }
 
-// PDF DOWNLOAD
-function downloadPDF() {
-  const content = document.getElementById("output").innerText;
-
-  const blob = new Blob([content], { type: "text/plain" });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = "Palm_Report.txt";
-  link.click();
+// PAYMENT (demo)
+function payNow(){
+  alert("Payment integration next step (Razorpay add karenge)");
 }
 
 </script>
